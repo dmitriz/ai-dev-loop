@@ -43,7 +43,7 @@ A structured workflow for efficiently planning, building, and refining systems u
 
 ## Cycle Time Targets (Solo Human + AI)
 | Phase                          | Target Time     |
-|----------------------|------------------|
+|---------------------------------|------------------|
 | Define Objective       | 10–15 min           |
 | Draft System            | 5–10 min              |
 | Plan Implementation   | 10–15 min        |
