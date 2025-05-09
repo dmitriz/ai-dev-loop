@@ -2,11 +2,11 @@
 
 _Continuation of Cycle Time Targets and closing notes._
 
-| Phase                         | Target Time         |
-|----------------------|------------------------|
-| Execute Loops        | 1–2 hrs / unit |
-| Validate & QA        | 15–30 min          |
-| Document & Automate  | 15–20 min          |
+| Phase               | Target Time         |
+|---------------------|---------------------|
+| Execute Loops       | 1–2 hrs / unit      |
+| Validate & QA       | 15–30 min           |
+| Document & Automate | 15–20 min           |
 
 ---
 
