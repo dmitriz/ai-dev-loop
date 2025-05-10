@@ -70,7 +70,7 @@ This system is not responsible for code review — it reacts to already-provided
 - **Favor low-risk, low-effort tasks** for immediate application.
 - **Reject or defer any suggestion that introduces high complexity or risk**.
 - **Clarify vague feedback before taking action** — never guess the reviewer’s intent.
-- **Batch process simple review tasks** across projects to optimize attention.
+- **Batch process simple review tasks** (with potential for cross-project batching in future iterations) to optimize attention.
 - **Avoid over-processing** reviewer comments unless there’s meaningful benefit.
 
 ---
