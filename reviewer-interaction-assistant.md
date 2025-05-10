@@ -56,12 +56,12 @@ This system is not responsible for code review — it reacts to already-provided
 ## Interaction Channels (Ranked by Effort)
 
 | Channel                            | Description                                                | Effort     | Batching Potential |
-|------------------------------------|------------------------------------------------------------|------------|---------------------|
-| GitHub Suggested Changes           | One-click UI for simple diffs                              | Very Low   | High                |
-| Inline Reviewer Comments           | Prose suggestions attached to specific lines               | Low        | Medium              |
-| Threaded Review Conversations      | General comments, questions, or broader design feedback    | Medium     | Low                 |
-| Copilot / AI Editor Suggestions    | Manual interactions with Copilot/LLMs based on comment     | Medium     | Medium              |
-| External LLM Tools                 | Copy-paste into GPT, Claude, etc.                          | Variable   | Low                 |
+|------------------------------------|------------------------------------------------------------|------------|-------------------|
+| GitHub Suggested Changes           | One-click UI for simple diffs                              | Very Low   | High              |
+| Inline Reviewer Comments           | Prose suggestions attached to specific lines               | Low        | Medium            |
+| Threaded Review Conversations      | General comments, questions, or broader design feedback    | Medium     | Low               |
+| Copilot / AI Editor Suggestions    | Manual interactions with Copilot/LLMs based on comment     | Medium     | Medium            |
+| External LLM Tools                 | Copy-paste into GPT, Claude, etc.                          | Variable   | Low               |
 
 ---
 
