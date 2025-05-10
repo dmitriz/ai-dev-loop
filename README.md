@@ -24,4 +24,4 @@ It does not perform code review — it processes existing comments, applies safe
 
 ## Status
 
-This
+This project is currently in development. Core functionality is being implemented and the system is not yet ready for production use.
