@@ -50,4 +50,6 @@ Checklist for reviewing and finalizing a pull request, ensuring tests pass and a
 ### 6. Merge and Cleanup
 
 - [ ] On GitHub, click **"Merge pull request"**
-- [ ] Delete the feature branch both **remotely and locally**
+- [ ] Delete the feature branch remotely (on GitHub after merge)
+- [ ] Delete the feature branch locally: `git branch -d <feature-branch>`
+- [ ] Prune remote tracking branches: `git fetch --prune`
