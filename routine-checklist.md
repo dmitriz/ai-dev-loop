@@ -59,6 +59,7 @@ Finish and merge the feature branch safely and quickly, ensuring everything is c
 - [ ] Delete feature branch after merge
 
 ## Notes
+
 - Don’t overthink the perfect fix—prioritize shipping safely.
 - If stuck in reviewer feedback, consider scheduling a time-boxed review sprint.
 >>>>>>> dad079e (Create routine-checklist.md)
