@@ -1,4 +1,4 @@
-# Title: PR Review and Finalization Checklist
+# PR Review and Finalization Checklist
 
 ## Purpose
 
