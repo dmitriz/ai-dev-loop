@@ -1,53 +1,25 @@
-# PR Review and Finalization Checklist
+# Pull Request Review Checklist
 
-## Purpose
+## 1. Prioritization
+- [ ] Only review pull requests that are essential.
+- [ ] Skip cosmetic or minor improvements unless they block progress.
 
-Checklist for reviewing and finalizing a pull request, ensuring tests pass and all comments are addressed before merge.
+## 2. Review Path
+- [ ] Start with GitHub online review.
+- [ ] Then open VS Code and sync with the latest branch changes.
 
----
+## 3. In VS Code
+- [ ] Quickly go through remaining comments.
+- [ ] Use Copilot for changes unless a specific suggestion is provided.
+- [ ] Decide if each suggestion is essential. Skip non-essential.
+- [ ] If essential, commit before or after applying the suggestion.
+- [ ] Avoid long Copilot sessions. If it takes too long, skip or revert.
 
-## 1. Confirm All Tests Pass Locally
+## 4. Finalization
+- [ ] Once all review comments are addressed, commit and push.
+- [ ] Merge pull request locally (preferred), or on GitHub if needed.
+- [ ] Delete branch locally and remotely after merge.
 
-- [ ] Run local test suite: `npm test` or equivalent
-- [ ] If tests fail:
-  - [ ] Use Copilot to assist in fixing failing tests
-  - [ ] Re-run tests to confirm success
-
----
-
-## 2. Push Changes
-
-- [ ] Push all committed changes to remote feature branch: `git push`
-
----
-
-## 3. Review Pull Request on GitHub
-
-- [ ] Open corresponding PR on GitHub
-- [ ] Review all **open comments**
-- [ ] For each comment:
-  - [ ] If a direct commit suggestion is available and valid, click **“Commit suggestion”**
-  - [ ] Otherwise, **skip** non-essential feedback
-
----
-
-## 4. Return to Local Environment
-
-- [ ] Pull the latest changes from the remote feature branch: `git pull origin <feature-branch>`
-- [ ] Merge `main` into the current branch (if needed): `git merge main`
-- [ ] Resolve any conflicts
-
----
-
-## 5. Final Local Confirmation
-
-- [ ] Re-run all tests to confirm everything still passes
-- [ ] Make any final Copilot-assisted fixes
-- [ ] Commit and push final changes
-
----
-
-## 6. Merge and Cleanup
-
-- [ ] On GitHub, click **“Merge pull request”**
-- [ ] Delete the feature branch both **remotely and locally**
+## Notes
+- Keep review sessions short and focused.
+- Always prefer minimal clean merges over perfect but delayed changes.
