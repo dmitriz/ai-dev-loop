@@ -1,4 +1,4 @@
-# Review and Finalization Checklist
+# Title: PR Review and Finalization Checklist
 
 ## Purpose
 
@@ -6,7 +6,7 @@ Checklist for reviewing and finalizing a pull request, ensuring tests pass and a
 
 ---
 
-### 1. Confirm All Tests Pass Locally
+## 1. Confirm All Tests Pass Locally
 
 - [ ] Run local test suite: `npm test` or equivalent
 - [ ] If tests fail:
@@ -15,23 +15,23 @@ Checklist for reviewing and finalizing a pull request, ensuring tests pass and a
 
 ---
 
-### 2. Push Changes
+## 2. Push Changes
 
 - [ ] Push all committed changes to remote feature branch: `git push`
 
 ---
 
-### 3. Review Pull Request on GitHub
+## 3. Review Pull Request on GitHub
 
 - [ ] Open corresponding PR on GitHub
 - [ ] Review all **open comments**
 - [ ] For each comment:
-  - [ ] If a direct commit suggestion is available and valid, click **"Commit suggestion"**
+  - [ ] If a direct commit suggestion is available and valid, click **“Commit suggestion”**
   - [ ] Otherwise, **skip** non-essential feedback
 
 ---
 
-### 4. Return to Local Environment
+## 4. Return to Local Environment
 
 - [ ] Pull the latest changes from the remote feature branch: `git pull origin <feature-branch>`
 - [ ] Merge `main` into the current branch (if needed): `git merge main`
@@ -39,7 +39,7 @@ Checklist for reviewing and finalizing a pull request, ensuring tests pass and a
 
 ---
 
-### 5. Final Local Confirmation
+## 5. Final Local Confirmation
 
 - [ ] Re-run all tests to confirm everything still passes
 - [ ] Make any final Copilot-assisted fixes
@@ -47,9 +47,7 @@ Checklist for reviewing and finalizing a pull request, ensuring tests pass and a
 
 ---
 
-### 6. Merge and Cleanup
+## 6. Merge and Cleanup
 
-- [ ] On GitHub, click **"Merge pull request"**
-- [ ] Delete the feature branch remotely (on GitHub after merge)
-- [ ] Delete the feature branch locally: `git branch -d <feature-branch>`
-- [ ] Prune remote tracking branches: `git fetch --prune`
+- [ ] On GitHub, click **“Merge pull request”**
+- [ ] Delete the feature branch both **remotely and locally**
