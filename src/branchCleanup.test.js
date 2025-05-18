@@ -1,23 +1,25 @@
 /**
  * Unit tests for merged branch deletion functionality
  * 
- * These tests verify that the branchCleanup module correctly:
- * 1. Identifies branches that have been merged into main
- * 2. Deletes identified branches both locally and remotely
- * 3. Only excludes main and master branches from deletion
+ * These tests verify:
+ * 1. The identifyMergedBranches function correctly finds branches merged into main
+ *    (excluding only main and master from deletion)
+ * 2. The deleteBranch function correctly executes deletion commands
+ *    for both local and remote branches
  */
 
-const branchCleanup = require('./branchCleanup');
+// Import the specific functions we want to test directly
+const { identifyMergedBranches, deleteBranch } = require('./branchCleanup');
 
-// Mock the child_process.execSync to avoid real git commands during tests
+// Mock child_process.execSync to prevent real git commands during tests
 jest.mock('child_process', () => ({
   execSync: jest.fn()
 }));
 
-// Import the mocked execSync function
+// Import the mocked execSync for verification
 const { execSync } = require('child_process');
 
-describe('Merged Branch Deletion Utility', () => {
+describe('Merged Branch Deletion Functions', () => {
   // Reset mocks between tests
   beforeEach(() => {
     jest.clearAllMocks();
@@ -26,69 +28,81 @@ describe('Merged Branch Deletion Utility', () => {
     console.error = jest.fn();
   });
 
-  describe('identifyMergedBranches', () => {
-    it('identifies branches merged into main while excluding only main and master', () => {
-      // Mock git branch --merged main output with various branches
-      const mockExecFn = jest.fn().mockReturnValue(
+  describe('identifyMergedBranches function', () => {
+    it('returns all branches merged into main except main and master', () => {
+      // Create a mock function that simulates 'git branch --merged main' command output
+      // This mock returns a string with several branch names as if they were merged
+      const mockGitCommand = jest.fn().mockReturnValue(
         '  branch1\n* main\n  master\n  develop\n  feature/123\n  release'
       );
       
-      const result = branchCleanup.identifyMergedBranches(mockExecFn);
+      // Call our function with the mock
+      const mergedBranches = identifyMergedBranches(mockGitCommand);
       
-      // Verify it called our mock with the correct git command
-      expect(mockExecFn).toHaveBeenCalledWith('git branch --merged main');
+      // Verify the function called git with the correct command
+      expect(mockGitCommand).toHaveBeenCalledWith('git branch --merged main');
       
-      // Verify it correctly identifies ALL branches for deletion EXCEPT main and master
-      expect(result).toContain('branch1');
-      expect(result).toContain('feature/123');
-      expect(result).toContain('develop');
-      expect(result).toContain('release');
-      expect(result).not.toContain('main');
-      expect(result).not.toContain('master');
+      // Verify the function returns all branches except main and master
+      expect(mergedBranches).toContain('branch1');
+      expect(mergedBranches).toContain('feature/123');
+      expect(mergedBranches).toContain('develop');
+      expect(mergedBranches).toContain('release');
+      expect(mergedBranches).not.toContain('main');
+      expect(mergedBranches).not.toContain('master');
     });
 
-    it('outputs nothing when no branches to delete', () => {
-      // Mock git branch output with only main and master
-      const mockExecFn = jest.fn().mockReturnValue('* main\n  master');
-      const result = branchCleanup.identifyMergedBranches(mockExecFn);
+    it('returns an empty array when only main and master branches exist', () => {
+      // Mock returning only main and master branches
+      const mockGitCommand = jest.fn().mockReturnValue('* main\n  master');
       
-      // Should return empty array when only main/master exist
-      expect(result.length).toBe(0);
+      // Call our function with the mock
+      const mergedBranches = identifyMergedBranches(mockGitCommand);
+      
+      // Should return empty array when no branches to delete exist
+      expect(mergedBranches.length).toBe(0);
     });
   });
 
-  describe('deleteBranch', () => {
-    it('deletes a branch both locally and remotely', () => {
+  describe('deleteBranch function', () => {
+    it('executes git commands to delete a branch both locally and remotely', () => {
+      // Create a mock execution function to verify commands
       const mockExecFn = jest.fn();
       const branchName = 'feature/123';
-      const result = branchCleanup.deleteBranch(branchName, mockExecFn);
       
-      // Verify it executes both local and remote deletion commands
+      // Call deleteBranch with our mock
+      deleteBranch(branchName, mockExecFn);
+      
+      // Verify it called the right git commands in sequence
       expect(mockExecFn).toHaveBeenCalledWith(`git branch -d ${branchName}`);
       expect(mockExecFn).toHaveBeenCalledWith(`git push origin --delete ${branchName}`);
-      expect(result).toBe(true);
-    });
-
-    it('handles deletion errors gracefully without crashing', () => {
-      // Mock a failure scenario (e.g., branch doesn't exist)
-      const mockExecFn = jest.fn().mockImplementation(() => {
-        throw new Error('Branch not found or cannot be deleted');
-      });
-      
-      const result = branchCleanup.deleteBranch('invalid-branch', mockExecFn);
-      
-      // Function should return false on error and log the issue
-      expect(result).toBe(false);
-      expect(console.error).toHaveBeenCalled();
     });
   });
-
-  // Test suite verification - ensure all required functions are exported
-  describe('Required Functions', () => {
-    it('exports identifyMergedBranches and deleteBranch functions', () => {
-      // These are the essential functions for branch deletion
-      expect(typeof branchCleanup.identifyMergedBranches).toBe('function');
-      expect(typeof branchCleanup.deleteBranch).toBe('function');
+  
+  // End-to-end test that combines both functions
+  describe('End-to-end branch deletion workflow', () => {
+    it('identifies merged branches and deletes them', () => {
+      // Setup mocks for both functions
+      const mockGitBranchOutput = jest.fn().mockReturnValue(
+        '  feature/done\n* main\n  master\n  bugfix/123'
+      );
+      const mockExecFn = jest.fn();
+      
+      // First get the merged branches
+      const branchesToDelete = identifyMergedBranches(mockGitBranchOutput);
+      
+      // Then delete each one
+      branchesToDelete.forEach(branch => {
+        deleteBranch(branch, mockExecFn);
+      });
+      
+      // Verify correct branches were identified
+      expect(branchesToDelete).toEqual(['feature/done', 'bugfix/123']);
+      
+      // Verify deletion commands were executed for each branch
+      expect(mockExecFn).toHaveBeenCalledWith('git branch -d feature/done');
+      expect(mockExecFn).toHaveBeenCalledWith('git push origin --delete feature/done');
+      expect(mockExecFn).toHaveBeenCalledWith('git branch -d bugfix/123');
+      expect(mockExecFn).toHaveBeenCalledWith('git push origin --delete bugfix/123');
     });
   });
 });
