@@ -19,7 +19,10 @@
   - Ingests raw feedback from any source
   - Extracts actionable insights
   - Tags for reuse
-  - Flags for human review only if unclear
+  - Flags for human review when:
+    - Confidence score < 0.7
+    - Contradicts existing insights
+    - Contains novel strategic direction
 
 ---
 
