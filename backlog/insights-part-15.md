@@ -14,7 +14,7 @@
   - 20–25 minute sessions
   - 3–5 minute movement breaks
   - 4 sessions = long break (15–30 min)
-- Session data should be logged: duration, task ID, self-reported focus level, interruptions
+- Session data should be logged in a structured format:
 - Look for patterns over time: when does focus dip? What types of tasks generate fatigue?
 
 ## Feedback Integration Models
