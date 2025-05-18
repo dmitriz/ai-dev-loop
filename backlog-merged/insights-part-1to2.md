@@ -1,15 +1,15 @@
 # Insights - Parts 1 to 2
 
-This document is a structured archive of key insights, observations, st    - *Example*:
-      > "Link: [https://www.perplexity.ai/](https://www.perplexity.ai/) — Try chaining follow-up prompts for deeper dives.  
-      Note: Compare this workflow to ChatGPT's thread management."
+# Insights - Parts 1 to 2
+
+This document is a structured archive of key insights, observations, and reflections captured during recent MVP planning, productivity exploration, and feedback sessions. It is intended to preserve long-term value and serve as a resource for future reference and decision-making.
 
 ## File Naming Strategy Overview
 
 - Adopt simple, clean, non-redundant naming:
   - Folder provides context (`backlog/`)
   - File uses compact names like `insights-part-N.md`
-- Keep filenames short to avoid UI truncation in GitHub or editors.and reflections captured during recent MVP planning, productivity exploration, and feedback sessions. It is intended to preserve long-term value and serve as a resource for future reference and decision-making.
+- Keep filenames short to avoid UI truncation in GitHub or editors.
 
 ---
 
