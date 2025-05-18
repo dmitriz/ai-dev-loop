@@ -20,9 +20,9 @@
 
 ## On Archives as Cognitive Extensions
 
-- Insight archives function like external memory: they must be searchable, linkable, and modular.
-- Folders like `/backlog` act as “infrastructure of thought”—they enable structured deferral rather than forgetfulness.
-- Naming conventions and structure are key to long-term retrieval; brevity plus clarity is optimal.
+- Insight archives: searchable, linkable, modular.
+- `/backlog`: infrastructure of thought.
+- Brevity + clarity: faster retrieval.
 
 ## On Readiness to Invest Time
 
