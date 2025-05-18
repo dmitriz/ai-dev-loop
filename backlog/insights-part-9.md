@@ -10,7 +10,7 @@
 
 - Interleaving focused coding with exploratory activities (like AI querying) can refresh mental energy.
 - Structured “side loops” (e.g., feedback harvesting with Perplexity) can be productive breaks, not distractions.
-- The trick is to contain them with clear boundaries: start, capture, archive, and stop.
+- The trick is to contain them with clear boundaries: defining when to start, what to capture, how to archive collected insights, and determining when to stop.
 
 ## On Session Layering and Mental Context Switching
 
