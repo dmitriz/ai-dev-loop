@@ -10,7 +10,7 @@ Checklist for reviewing and finalizing pull requests: ensure tests pass, comment
 
 - [ ] Run local test suite: `npm test` or equivalent
 - [ ] If tests fail:
-  - [ ] Use Copilot for assistance
+  - [ ] Use Copilot for assistance in fixing failing tests
   - [ ] Re-run tests to confirm success
 
 ---
