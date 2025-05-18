@@ -32,12 +32,14 @@ if [[ "$answer" != "y" ]]; then
 fi
 
 # Step 4: Delete local merged branches
-for branch in $merged_branches; do
+while IFS= read -r branch; do
+  # Skip potential empty lines, though the check on line 19 should prevent $merged_branches from being empty.
+  if [ -z "$branch" ]; then continue; fi
   if git show-ref --verify --quiet refs/heads/"$branch"; then
     echo "Deleting local branch: $branch"
     git branch -d "$branch" || echo "Failed to delete local branch $branch"
   fi
-done
+done <<< "$merged_branches"
 
 # Step 5: Delete remote merged branches
 for branch in $merged_branches; do
