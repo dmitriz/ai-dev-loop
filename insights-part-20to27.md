@@ -103,6 +103,10 @@
     - Human review of all strategic decisions
     - Transparent audit logs of agent reasoning
     - Emergency override capabilities
+  - With mandatory safety guardrails:
+    - Human review of all strategic decisions
+    - Transparent audit logs of agent reasoning
+    - Emergency override capabilities
 
 - At that point, the loop moves to “maintenance mode” — only critical interventions by human
 
