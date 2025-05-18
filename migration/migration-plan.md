@@ -136,7 +136,7 @@ EOF
 mkdir -p $EXPORT_DIR/bin
 cat > $EXPORT_DIR/bin/cleanup.js << 'EOF'
 
-# !/usr/bin/env node
+#!/usr/bin/env node
 
 // Just import and run the main function from our module
 const { main } = require('../src/index');
