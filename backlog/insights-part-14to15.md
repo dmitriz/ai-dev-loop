@@ -186,12 +186,12 @@
 - Over time this creates a valuable dataset:
   - Identify hidden complexity
   - Refine estimation
-  - Correlate fatigue with task type
+  ## Memory & Local Caching
 
-## Memory & Local Caching
-
-- Use local `.state.json` for fast startup—load last known context (ensure the file has strict permissions and is added to .gitignore)
-- Use `.session.json` to track current session data (task ID, timer start, flags) (store only non-sensitive data or encrypt any sensitive details)
+  - Use local `.state.json` for fast startup—load last known context (ensure the file has strict permissions and is added to `.gitignore`).
+  - Use `.session.json` to track current session data (task ID, timer start, flags) (store only non-sensitive data or encrypt any sensitive details).
+  - Backup old states daily (consider encrypting backups to protect data integrity).
+  - Optionally sync to GitHub for long-term archive (sync only to private repositories or secure storage to prevent exposure).
 - Backup old states daily (consider encrypting backups to protect data integrity)
 - Optionally sync to GitHub for long-term archive (sync only to private repositories or secure storage to prevent exposure)
 
