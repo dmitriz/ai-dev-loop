@@ -42,12 +42,14 @@ while IFS= read -r branch; do
 done <<< "$merged_branches"
 
 # Step 5: Delete remote merged branches
-for branch in $merged_branches; do
+while IFS= read -r branch; do
+  # Skip potential empty lines
+  if [ -z "$branch" ]; then continue; fi
   if git show-ref --verify --quiet refs/remotes/origin/"$branch"; then
     echo "Deleting remote branch: $branch"
     git push origin --delete "$branch" || echo "Failed to delete remote branch $branch"
   fi
-done
+done <<< "$merged_branches"
 
 echo "All merged branches (except main) deleted locally and remotely."
 echo "Operation completed successfully."
