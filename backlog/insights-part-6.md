@@ -26,6 +26,6 @@
 
 ## On Time Efficiency as a Design Constraint
 
-- Every improvement to reduce idea-to-record time compounds value across the system.
+- Reducing idea-to-record time improves value across the system.
 - Low-friction capture and delegation workflows allow humans to focus on higher-level synthesis.
 - Managing insight logistics is a critical bottleneck reducer—process is productivity.
