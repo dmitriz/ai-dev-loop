@@ -1,12 +1,13 @@
 # AI-Assisted Development Cycle (Part 2)
 
-_Continuation of Cycle Time Targets and closing notes._
+_Additional notes and best practices._
 
-| Phase               | Target Time         |
-|---------------------|---------------------|
-| Execute Loops       | 1–2 hrs / unit      |
-| Validate & QA       | 15–30 min           |
-| Document & Automate | 15–20 min           |
+## Best Practices
+
+- **Start Small**: Begin with well-defined, manageable objectives
+- **Maintain Control**: AI suggests, human decides
+- **Iterative Refinement**: Expect multiple loops of feedback and improvement
+- **Documentation First**: Document decisions and rationale as you go
 
 ---
 
