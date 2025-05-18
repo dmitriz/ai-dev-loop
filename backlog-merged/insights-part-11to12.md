@@ -1,6 +1,10 @@
-# Insights – Part 11
+# Insights – Part 11# On Flow Between Knowledge & Action
 
-## On Scaling Feedback Loops
+- Treat the insight archive as a launching pad for MVP decisions.
+- Keep a "reviewable backlog" of insights when prioritizing new features or iterations.
+- Don't let unstructured brilliance get lost—routine review builds strategic clarity.
+
+# Insights – Part 12 Scaling Feedback Loops
 
 - Create internal protocols for summarizing and storing responses from AI assistants.
 - Systematically compare insights from multiple models (e.g., Gemini, Claude, Perplexity).

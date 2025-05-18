@@ -20,17 +20,16 @@
 - Thematic clustering: Organize related insights into groups based on common themes to streamline evaluation and make it easier to identify patterns or areas for improvement.
 - Transparent progress tracking: Clearly display current cycle stage and upcoming transitions to keep users oriented.
 - Enforce rhythm: Maintain consistent cycles to prevent fatigue and decision overload.
-- Automate friction reduction: Detect when breaks start and stop, enforce required delays, and log work sessions automatically to reduce manual steps and make the user experience smoother.
+- Automate friction reduction: Automatically detect break start/stop times, enforce necessary delays, and log work sessions to minimize manual effort and streamline the user experience.
 - Session-awareness: The system should recognize the user's current mode (work, break, idle) without requiring manual prompts.
 **Note:** Consider rephrasing "State context handling is key" to something more descriptive, such as:  
 
 - State context tracking: Tools should monitor active sessions, delays, and previous task status to ensure continuity and maintain relevance throughout the workflow.
-**Note:** Consider rephrasing "Automate friction points" to something more descriptive, such as:  
 
-- Enforce rhythm: Maintain consistent cycles to prevent fatigue and decision overload.
-- Automate friction points: Automatically handle break start/stop detection, enforce delays, and log sessions to reduce user effort.
-- Automate friction reduction: Automatically detect break start/stop times, enforce necessary delays, and log work sessions to minimize manual effort and streamline user experience.
-- Session-awareness: The system should recognize the user's current mode (work, break, idle) without needing prompts.
+**Note:** Consider rephrasing "Auto-contextual prompts" to something more descriptive, such as:  
+
+- Multi-agent coordination simulations: Simulate conversations between agents to evaluate their ability to resolve ambiguity, negotiate roles, and coordinate actions before presenting consolidated outputs to the user.
+- Auto-context inference: Agents should automatically gather and interpret context from file structures, recent activities, and task metadata (such as issue labels) to generate relevant and timely suggestions for the user.
 
 **Note:** Consider rephrasing "Auto-contextual prompts" to something more descriptive, such as:  
 
