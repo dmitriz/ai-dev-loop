@@ -4,7 +4,7 @@
  * These tests verify that the branchCleanup module correctly:
  * 1. Identifies branches that have been merged into main
  * 2. Deletes identified branches both locally and remotely
- * 3. Skips protected branches (main, develop, release)
+ * 3. Only excludes main and master branches from deletion
  */
 
 const branchCleanup = require('./branchCleanup');
@@ -27,7 +27,7 @@ describe('Merged Branch Deletion Utility', () => {
   });
 
   describe('identifyMergedBranches', () => {
-    it('identifies branches merged into main while excluding protected branches', () => {
+    it('identifies branches merged into main while excluding specific branches', () => {
       // Mock git branch --merged main output with various branches
       const mockExecFn = jest.fn().mockReturnValue(
         '  branch1\n* main\n  develop\n  feature/123\n  release'
@@ -38,7 +38,7 @@ describe('Merged Branch Deletion Utility', () => {
       // Verify it called our mock with the correct git command
       expect(mockExecFn).toHaveBeenCalledWith('git branch --merged main');
       
-      // Verify it correctly identifies branches for deletion while excluding protected ones
+      // Verify it correctly identifies branches for deletion while excluding specific ones
       expect(result).toEqual(['branch1', 'feature/123']);
       expect(result).not.toContain('main');
       expect(result).not.toContain('develop');
@@ -46,11 +46,11 @@ describe('Merged Branch Deletion Utility', () => {
     });
 
     it('returns empty array when no merged branches exist', () => {
-      // Mock git branch output with only protected branches
+      // Mock git branch output with only excluded branches
       const mockExecFn = jest.fn().mockReturnValue('* main\n  develop\n  release');
       const result = branchCleanup.identifyMergedBranches(mockExecFn);
       
-      // Should return empty array when no merged branches exist (or only protected branches)
+      // Should return empty array when no merged branches exist (or only excluded branches)
       expect(result).toEqual([]);
     });
   });
