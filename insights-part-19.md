@@ -2,8 +2,8 @@
 
 ## Section A: Scaling the Archive Model
 
-- The archive file approach provides a “flat memory” for high-throughput insight capture. But over time, indexing and retrieval become critical.
-- Introduce a second agent that builds a semantic map of all archived insights, tagging by topic, use case, and origin (e.g., feedback vs. original idea).
+- The archive file approach provides a "flat memory" for high-throughput insight capture. But over time, indexing and retrieval become critical.
+- Introduce a second agent that builds a semantic map of all archived insights, tagging by topic, use case, and origin (e.g., feedback vs. original idea). This agent could leverage vector embeddings and run weekly indexing jobs on the repository.
 - Allow the archive to grow freely, but segment by purpose: insights/, feedback/, meta/, logs/. Each becomes a channel with specialized tooling.
 - The value of the archive increases with reuse. Every new session can start by querying the archive for relevant insights, acting as a preloaded prompt.
 - Agents should learn to auto-link entries in the archive to related GitHub issues, repos, or code snippets. This creates ambient context for future retrieval.
