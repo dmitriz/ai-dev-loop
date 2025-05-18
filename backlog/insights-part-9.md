@@ -3,7 +3,7 @@
 ## On Tradeoffs Between Immediate Delivery and Long-Term Efficiency
 
 - Not all MVP work should be rushed—investing time now to prevent long-term waste can be justified.
-- Evaluate “cuts” based not only on speed but also on how they affect future development velocity.
+- Evaluate “cuts” based not only on speed—but also on how they affect future development velocity.
 - Strategic delay (e.g., to archive insights, test tooling) can improve system throughput long-term.
 
 ## On Side Sessions and Cognitive Relief
