@@ -13,13 +13,18 @@ echo "Checking for all merged branches..."
 mapfile -t merged_local < <(git branch --merged main | grep -vE '^\*|main|HEAD' | sed 's/^[[:space:]]*//')
 mapfile -t merged_remote < <(git branch -r --merged main | grep -v 'origin/main' | sed 's/origin\///' | sed 's/^[[:space:]]*//')
 merged_remote=$(git branch -r --merged main | grep -v 'origin/main' | sed 's/origin\///' | sed 's/^[[:space:]]*//')
-
 # Combine local and remote merged branches
-merged_branches=$(echo -e "$merged_local\n$merged_remote" | sort | uniq)
-
-if [ -z "$merged_branches" ]; then
+if [[ ${#merged_local[@]} -eq 0 && ${#merged_remote[@]} -eq 0 ]]; then
   echo "No merged branches to delete."
   exit 0
+fi
+
+mapfile -t merged_branches < <(printf "%s\n" "${merged_local[@]}" "${merged_remote[@]}" | sort | uniq | grep -v '^$')
+
+if [[ ${#merged_branches[@]} -eq 0 ]]; then
+  echo "No merged branches to delete."
+  exit 0
+fi
 fi
 
 echo "Merged branches to delete:"
