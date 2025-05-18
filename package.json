@@ -1,0 +1,14 @@
+{
+  "name": "ai-dev-loop",
+  "version": "1.0.0",
+  "description": "Script to delete all merged Git branches and run tests",
+  "main": "cleanupMergedBranches.js",
+  "scripts": {
+    "cleanup-merged-branches": "node cleanupMergedBranches.js"
+  },
+  "bin": {
+    "cleanup-merged-branches": "cleanupMergedBranches.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
