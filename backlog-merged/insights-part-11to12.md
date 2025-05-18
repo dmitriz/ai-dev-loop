@@ -1,4 +1,6 @@
-# Insights – Part 11# On Flow Between Knowledge & Action
+# Insights – Part 11
+
+## On Flow Between Knowledge & Action
 
 - Treat the insight archive as a launching pad for MVP decisions.
 - Keep a "reviewable backlog" of insights when prioritizing new features or iterations.
