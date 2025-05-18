@@ -8,7 +8,7 @@
 
 ## On Naming and File Structure
 
-- Clean, minimal filenames help avoid cognitive friction during search and reuse.
+- Clean, minimal filenames help avoid cognitive friction during search and reuse (e.g., `meeting-notes.md` instead of `MeetingNotesFrom20240101.md`).
 - Folder context (e.g., `/backlog`) should carry semantic weight so file names can stay concise.
 - Sequential naming (`insights-part-X`) enables chronological anchoring and easy automation.
 
