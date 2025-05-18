@@ -10,8 +10,8 @@ git fetch --all --prune
 
 # Step 3: Get merged branches (excluding main and HEAD)
 echo "Checking for all merged branches..."
-# Check both local and remote merged branches
-merged_local=$(git branch --merged main | grep -vE '^\*|main|HEAD' | sed 's/^[[:space:]]*//')
+mapfile -t merged_local < <(git branch --merged main | grep -vE '^\*|main|HEAD' | sed 's/^[[:space:]]*//')
+mapfile -t merged_remote < <(git branch -r --merged main | grep -v 'origin/main' | sed 's/origin\///' | sed 's/^[[:space:]]*//')
 merged_remote=$(git branch -r --merged main | grep -v 'origin/main' | sed 's/origin\///' | sed 's/^[[:space:]]*//')
 
 # Combine local and remote merged branches
