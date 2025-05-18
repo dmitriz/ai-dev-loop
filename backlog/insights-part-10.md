@@ -2,7 +2,7 @@
 
 ## On Strategic Layering of Knowledge and Execution
 
-- Not all insight needs immediate execution—store, tag, and revisit when relevant.
+- Not all insights need immediate execution—store, tag, and revisit when relevant.
 - Create a clear divide between “execution backlog” and “insight archive.”
 - Long-term systems thinking is a valid investment, especially when paired with automation.
 
