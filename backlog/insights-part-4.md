@@ -26,6 +26,6 @@
 
 ## On Readiness to Invest Time
 
-- Time spent on foundational setup pays off when it reduces future decision friction.
-- There’s wisdom in accepting short-term detours if they eliminate systemic inefficiencies later.
-- The cost-benefit analysis of “now vs. scalable later” must be dynamic, not dogmatic.
+- Invest in setup to reduce future friction.
+- Short-term detours: eliminate systemic inefficiencies.
+- Dynamic cost-benefit analysis: now vs. scalable later.
