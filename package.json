@@ -5,7 +5,7 @@
   "main": "cleanupMergedBranches.js",
   "scripts": {
     "cleanup": "node cleanupMergedBranches.js",
-    "test": "echo \"Warning: No tests configured (this is a placeholder)\" && exit 0"
+    "test": "jest"
   },
   "bin": {
     "cleanup-merged-branches": "./cleanupMergedBranches.js"
@@ -13,5 +13,8 @@
   "author": "",
   "engines": {
     "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
