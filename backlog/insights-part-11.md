@@ -9,7 +9,7 @@
 ## On Information Archiving Strategy
 
 - Every insight session should generate a persistent artifact (like a markdown file).
-- Structure insights into digestible parts (parts 1–N) to prevent truncation or overload.
+- Structure insights into digestible parts (parts 1-N) to prevent truncation or overload.
 - Store in a version-controlled system (e.g., GitHub) for traceability, sharing, and automation.
 
 ## On Time Investment Tradeoffs
