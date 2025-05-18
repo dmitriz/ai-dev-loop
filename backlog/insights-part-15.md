@@ -42,8 +42,8 @@
   - Pick from different queues: bug fixes, research, outreach, meta-dev
   - Let the user set a context: “I want to work on cleanup tasks”
   - Include a calendar-aware picker: don’t assign deep work 10 min before a meeting
+  - Consider implementing adaptive weighting based on historical task completion data and urgency levels
 - Picker should provide 1-sentence justification: “This is next because it’s urgent and unblocked.”
-
 ## Unified Command Interface
 
 - Interact via a single CLI: `npm start` or `./dev`
