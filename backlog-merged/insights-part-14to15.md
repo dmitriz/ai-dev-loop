@@ -84,6 +84,7 @@
 - Multi-agent consensus pipelines (e.g., PR reviewer + refactor agent + summarizer)
 
 # End of insights-part-14
+
 # Insights – Part 15
 
 ## Systems for Reducing Mental Load
@@ -130,6 +131,7 @@
   - Include a calendar-aware picker: don’t assign deep work 10 min before a meeting
   - Consider implementing adaptive weighting based on historical task completion data and urgency levels
 - Picker should provide 1-sentence justification: “This is next because it’s urgent and unblocked.”
+
 ## Unified Command Interface
 
 - Interact via a single CLI: `npm start` or `./dev`
@@ -233,6 +235,7 @@
 ## Summary
 
 You are now developing a layered productivity ecosystem:
+
 - Action layer (task picker, session start, timer)
 - Intelligence layer (labeling, prioritization, summarizing)
 - Feedback layer (logging, reflection, agent tuning)
