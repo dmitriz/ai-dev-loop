@@ -1,4 +1,6 @@
-# In## Scaling Agent Productivity
+# Insights – Part 14
+
+## Scaling Agent Productivity
 
 - Leverage networks of specialized, modular, and collaborative AI models rather than relying on a single model for true productivity gains.
 - Design agent networks like microservices: make each one perform a specific function well and communicate effectively with others.
