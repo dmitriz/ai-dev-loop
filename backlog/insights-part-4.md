@@ -14,9 +14,9 @@
 
 ## On Streamlined Capture Systems
 
-- Capturing high-velocity insights demands near-zero-friction tools—Google Sheets, shared inboxes, `insights.md` logs.
-- Tagging and auto-sorting ideas by theme or source increases downstream value extraction.
-- Manual capture can be strategically tolerated if processing and synthesis are automated later.
+- Capture insights: use Google Keep for quick notes.
+- Tagging/auto-sorting: increases downstream value.
+- Manual capture: automate processing/synthesis later.
 
 ## On Archives as Cognitive Extensions
 
