@@ -8,9 +8,9 @@
 
 ## On Tool Boundaries
 
-- AI tools like Copilot or Claude function well for specific use cases but are limited in orchestration.
-- Agent interaction must evolve from solo operations into collaborative swarms with task-specific handoff.
-- Current constraints (e.g., posting into other chats, file context limits) define architectural bottlenecks.
+- AI tools: limited orchestration (e.g., complex workflow transitions).
+- Collaborative swarms: task-specific handoff is key.
+- Architectural bottlenecks: chat posting, file context limits.
 
 ## On Streamlined Capture Systems
 
