@@ -2,9 +2,9 @@
 
 ## On Cognitive Relief through Parallel Modes
 
-- Alternating between intense focused work and lightweight information gathering can increase total output.
-- Perplexity’s suggestion-driven flow creates a sense of dynamic momentum with minimal strain.
-- Lightweight multitasking isn't a distraction when intentionally designed—it becomes cognitive recovery.
+- Alternate focus modes boost output.
+- Perplexity's flow: dynamic momentum, minimal strain.
+- Intentional multitasking: cognitive recovery.
 
 ## On Tool Boundaries
 
