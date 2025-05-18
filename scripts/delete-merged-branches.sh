@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # Step 1: Ensure on main branch
-git checkout main
+default_branch=$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')
+git checkout "$default_branch"
 
 # Step 2: Fetch latest from remote and update local refs
 git fetch --all --prune
