@@ -2,7 +2,7 @@
 
 ## On Archiving and Structuring Knowledge
 
-- Every useful idea deserves a “home.” A good archive reduces mental load and increases system trust.
+- Every useful idea deserves a "home." A good archive reduces mental load and increases system trust.
 - Long files should be broken into parts early, not only to prevent truncation but to preserve thematic clarity.
 - File naming matters: short, consistent, and descriptive naming (e.g., `insights-part-X`) enables faster access and indexing.
 
