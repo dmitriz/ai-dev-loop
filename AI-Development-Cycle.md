@@ -60,7 +60,7 @@ A structured workflow for efficiently planning, building, and refining systems u
 
 ---
 
-# AI-Assisted Development Cycle (Part 2)
+## AI-Assisted Development Cycle (Part 2)
 
 _Additional notes and best practices._
 
