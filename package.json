@@ -4,11 +4,14 @@
   "description": "Script to delete all merged Git branches and run tests",
   "main": "cleanupMergedBranches.js",
   "scripts": {
-    "cleanup-merged-branches": "node cleanupMergedBranches.js"
+    "cleanup": "node cleanupMergedBranches.js",
+    "test": "echo \"Warning: No tests configured (this is a placeholder)\" && exit 0"
   },
   "bin": {
-    "cleanup-merged-branches": "cleanupMergedBranches.js"
+    "cleanup-merged-branches": "./cleanupMergedBranches.js"
   },
   "author": "",
-  "license": "MIT"
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }

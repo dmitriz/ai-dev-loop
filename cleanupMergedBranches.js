@@ -63,6 +63,7 @@ function main() {
 
   // End-of-Task: run tests
   try {
+    console.log('Running tests...');
     run('npm test');
     console.log('✅ Cleanup complete!');
   } catch (err) {
