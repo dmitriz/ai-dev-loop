@@ -61,10 +61,10 @@
     - Semantic linking
     - Automated refactoring
   - Proposed directory split:
-    - `/insights`: distilled core ideas
-    - `/feedback`: user or agent feedback
-    - `/logs`: chronological transcripts
-    - `/meta`: system design principles
+    - `/insights`: distilled core ideas.
+    - `/feedback`: user or agent feedback.
+    - `/logs`: chronological transcripts.
+    - `/meta`: system design principles.
 
 ## Operational Bottlenecks and Solutions
 

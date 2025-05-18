@@ -66,6 +66,6 @@
 
 ## Cross-References
 
-- See [Productivity Systems & Workflows](./01-productivity-systems.md) for optimal AI workflows
-- See [Knowledge Management](./04-knowledge-management.md) for storing AI-generated insights
-- See [Systems Architecture](./06-systems-architecture.md) for AI system design considerations
+- See [Productivity Systems & Workflows](./01-productivity-systems.md) for optimal AI workflows.
+- See [Knowledge Management](./04-knowledge-management.md) for storing AI-generated insights.
+- See [Systems Architecture](./06-systems-architecture.md) for AI system design considerations.
