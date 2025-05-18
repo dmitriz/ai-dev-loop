@@ -14,7 +14,7 @@
 
 ## On Minimizing Friction for Future Retrieval
 
-- Consistency in naming, format, and structure enables easier parsing by agents or scripts later.
+- Consistent naming, format, and structure enable easier parsing by agents or scripts later.
 - Human readability is still important—even if automation increases, the file must be quickly browsable.
 - Meta-notes like `# Insights – Part X` act as anchors and afford fast scanning.
 
