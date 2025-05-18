@@ -1,16 +1,16 @@
-# PR Review and Finalization Checklist
+# Pull Request Review Checklist
 
 ## Purpose
 
-Checklist for reviewing and finalizing a pull request, ensuring tests pass and all comments are addressed before merge.
+Checklist for reviewing and finalizing pull requests: ensure tests pass, comments are addressed, and PR is clean before merge.
 
 ---
 
-## 1. Confirm All Tests Pass Locally
+## 1. Initial Testing
 
 - [ ] Run local test suite: `npm test` or equivalent
 - [ ] If tests fail:
-  - [ ] Use Copilot to assist in fixing failing tests
+  - [ ] Use Copilot for assistance in fixing failing tests
   - [ ] Re-run tests to confirm success
 
 ---
@@ -21,33 +21,33 @@ Checklist for reviewing and finalizing a pull request, ensuring tests pass and a
 
 ---
 
-## 3. Review Pull Request on GitHub
+## 3. Address Comments
 
 - [ ] Open corresponding PR on GitHub
 - [ ] Review all **open comments**
 - [ ] For each comment:
-  - [ ] If a direct commit suggestion is available and valid, click **“Commit suggestion”**
+  - [ ] If a direct commit suggestion is available and valid, click **"Commit suggestion"**
   - [ ] Otherwise, **skip** non-essential feedback
 
 ---
 
 ## 4. Return to Local Environment
 
-- [ ] Pull the latest changes from the remote feature branch: `git pull origin <feature-branch>`
-- [ ] Merge `main` into the current branch (if needed): `git merge main`
+- [ ] Pull latest from feature branch: `git pull origin <feature-branch>`
+- [ ] Merge or rebase `main` if needed
 - [ ] Resolve any conflicts
 
 ---
 
 ## 5. Final Local Confirmation
 
-- [ ] Re-run all tests to confirm everything still passes
-- [ ] Make any final Copilot-assisted fixes
-- [ ] Commit and push final changes
+- [ ] Re-run tests to confirm passing
+- [ ] Make final Copilot-assisted fixes
+- [ ] Commit and push changes
 
 ---
 
 ## 6. Merge and Cleanup
 
-- [ ] On GitHub, click **“Merge pull request”**
+- [ ] On GitHub, click **"Merge pull request"**
 - [ ] Delete the feature branch both **remotely and locally**
