@@ -128,12 +128,12 @@
 
 ## Self-Tuning Task System
 
-- Auto-reprioritize based on:
-  - Overdue deadlines
-  - Repeated skips
-  - Recent completions
-- Visualize: a task “heats up” the longer it’s ignored
-- Introduce decay: untagged or old tasks lose prominence unless revived
+- Auto-reprioritize based on specific triggers:
+  - Overdue deadlines: +2 priority points per day past deadline
+  - Repeated skips: +1 priority point after 3 consecutive skips
+  - Recent completions: -1 priority point for related tasks
+- Visualize: a task "heats up" the longer it's ignored (>5 days = red highlight)
+- Introduce decay: untagged tasks lose 1 priority point per week, old tasks (>30 days) lose prominence unless revived
 
 ## Experimentation and Playgrounds
 
