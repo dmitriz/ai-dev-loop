@@ -218,10 +218,10 @@
 
 - Create an agent whose sole job is to ask:
   - What are we trying to validate?
-  - What’s the smallest way to test that?
-  - What will we learn from the outcome?
-- The meta-agent ensures that:
-  - MVPs stay minimal
+- Use local `.state.json` for fast startup—load last known context (ensure the file has strict permissions and is added to `.gitignore`).
+- Use `.session.json` to track current session data (task ID, timer start, flags) (store only non-sensitive data or encrypt any sensitive details).
+- Backup old states daily (consider encrypting backups to protect data integrity).
+- Optionally sync to GitHub for long-term archive (sync only to private repositories or secure storage to prevent exposure).
   - Metrics are defined
   - Progress is not confused with activity
 
