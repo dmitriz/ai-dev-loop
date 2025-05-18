@@ -1,16 +1,29 @@
 /**
- * This module exports the main functionality from cleanupMergedBranches.js
- * but with injectable dependencies to make it testable
+ * This module provides functionality to delete branches that have been merged into main
+ * Each function accepts a custom execution function for testability
  */
 
 const { execSync } = require('child_process');
 
 // Helper functions
+/**
+ * Executes a shell command and prints it to console
+ * 
+ * @param {string} cmd - The shell command to execute
+ * @param {object} options - Options to pass to execSync
+ * @returns {Buffer} - The command output
+ */
 function run(cmd, options = {}) {
   console.log(`$ ${cmd}`);
   return execSync(cmd, { stdio: 'inherit', ...options });
 }
 
+/**
+ * Attempts to run a command but does not throw if it fails
+ * 
+ * @param {string} cmd - The shell command to execute
+ * @returns {boolean} - True if command succeeded, false if it failed
+ */
 function tryRun(cmd) {
   try {
     run(cmd);
@@ -21,12 +34,24 @@ function tryRun(cmd) {
   }
 }
 
+/**
+ * Executes a command and returns its output as a string
+ * 
+ * @param {string} cmd - The shell command to execute
+ * @returns {string} - The command output as a trimmed string
+ */
 function getOutput(cmd) {
   return execSync(cmd, { encoding: 'utf8' }).trim();
 }
 
 // Core functionality, extracted for testability
-function identifyMergedBranches(execFn) {
+/**
+ * Identifies branches that have been merged into main
+ * 
+ * @param {Function} execFn - Function that executes git commands (for testing)
+ * @returns {string[]} - Array of branch names that have been merged, excluding main and master
+ */
+function getMergedBranches(execFn) {
   const fn = execFn || getOutput;
   const mergedList = fn('git branch --merged main');
   return mergedList
@@ -35,6 +60,14 @@ function identifyMergedBranches(execFn) {
     .filter(name => name && !['main','master'].includes(name));
 }
 
+/**
+ * Deletes a branch both locally and remotely
+ * 
+ * @param {string} branch - The name of the branch to delete
+ * @param {Function} execFn - Function that executes git commands (for testing)
+ * @param {boolean} dryRun - If true, only simulates deletion without executing commands
+ * @returns {boolean} - True if deletion succeeded, false otherwise
+ */
 function deleteBranch(branch, execFn, dryRun = false) {
   const fn = execFn || run;
   try {
@@ -49,6 +82,84 @@ function deleteBranch(branch, execFn, dryRun = false) {
   }
 }
 
+// Split functions for local and remote deletion
+/**
+ * Deletes a branch locally only
+ * 
+ * @param {string} branch - The name of the branch to delete
+ * @param {Function} execFn - Function that executes git commands (for testing)
+ * @returns {boolean} - True if local deletion succeeded, false otherwise
+ */
+function deleteLocalBranch(branch, execFn) {
+  const fn = execFn || run;
+  try {
+    fn(`git branch -d ${branch}`);
+    return true;
+  } catch (err) {
+    console.error(`❌ Failed to delete local branch ${branch}: ${err.message}`);
+    return false;
+  }
+}
+
+/**
+ * Deletes a branch from the remote repository
+ * 
+ * @param {string} branch - The name of the branch to delete from remote
+ * @param {Function} execFn - Function that executes git commands (for testing)
+ * @returns {boolean} - True if remote deletion succeeded, false otherwise
+ */
+function deleteRemoteBranch(branch, execFn) {
+  const fn = execFn || run;
+  try {
+    fn(`git push origin --delete ${branch}`);
+    return true;
+  } catch (err) {
+    console.error(`❌ Failed to delete remote branch ${branch}: ${err.message}`);
+    return false;
+  }
+}
+
+/**
+ * Deletes all branches that have been merged into main
+ * 
+ * @param {Function} execFn - Function that executes git commands (for testing)
+ * @returns {Object} - Object with arrays of deleted and failed branches
+ * @returns {string[]} deleted - Names of branches successfully deleted
+ * @returns {string[]} failed - Names of branches that failed to delete
+ */
+function deleteMergedBranches(execFn) {
+  const branches = getMergedBranches(execFn);
+  
+  if (branches.length === 0) {
+    console.log('✔ No merged branches to delete.');
+    return { deleted: [], failed: [] };
+  }
+  
+  const results = { deleted: [], failed: [] };
+  
+  branches.forEach(branch => {
+    const localSuccess = deleteLocalBranch(branch, execFn);
+    const remoteSuccess = deleteRemoteBranch(branch, execFn);
+    
+    if (localSuccess && remoteSuccess) {
+      results.deleted.push(branch);
+      console.log(`✔ Deleted ${branch} locally and remotely`);
+    } else {
+      results.failed.push(branch);
+    }
+  });
+  
+  return results;
+}
+
+/**
+ * Gets the current branch name and repository root path
+ * 
+ * @param {Function} execFn - Function that executes git commands (for testing)
+ * @returns {Object} - Object containing current branch name and repo root path
+ * @returns {string} currentBranch - Name of the current branch
+ * @returns {string} repoRoot - Path to the repository root
+ */
 function getBranchState(execFn) {
   const fn = execFn || getOutput;
   return {
@@ -77,19 +188,16 @@ function main() {
   run('git checkout main');
   run('git pull origin main');
 
-  // Identify merged branches
-  const branches = identifyMergedBranches();
-
-  if (branches.length === 0) {
-    console.log('✔ No merged branches to delete.');
+  // Delete merged branches using our main function
+  const results = deleteMergedBranches();
+  
+  if (results.deleted.length === 0) {
+    console.log('No branches were deleted.');
   } else {
-    console.log('Deleting merged branches:');
-    branches.forEach(branch => {
-      const success = deleteBranch(branch);
-      if (success) {
-        console.log(`✔ Deleted ${branch}`);
-      }
-    });
+    console.log(`✅ Successfully deleted ${results.deleted.length} branches.`);
+    if (results.failed.length > 0) {
+      console.warn(`⚠️ Failed to delete ${results.failed.length} branches.`);
+    }
   }
 
   // End-of-Task: run tests
@@ -110,11 +218,21 @@ if (require.main === module) {
 
 // Export for testing
 module.exports = {
-  identifyMergedBranches,
-  deleteBranch,
+  // Core functions
+  getMergedBranches,                      // Main function to identify merged branches
+  identifyMergedBranches: getMergedBranches, // Alias for backward compatibility
+  deleteBranch,                           // Combined deletion function
+  deleteLocalBranch,                      // Local-only deletion
+  deleteRemoteBranch,                     // Remote-only deletion
+  deleteMergedBranches,                   // Main deletion workflow
+  cleanupMergedBranches: deleteMergedBranches, // Alias for backward compatibility
+  
+  // Helper functions
   getBranchState,
   getOutput,
   run,
   tryRun,
+  
+  // Main entry
   main
 };
