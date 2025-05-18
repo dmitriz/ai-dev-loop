@@ -32,7 +32,7 @@ function identifyMergedBranches(execFn) {
   return mergedList
     .split('\n')
     .map(line => line.replace('*', '').trim())
-    .filter(name => name && !['main','develop','release'].includes(name));
+    .filter(name => name && !['main','master'].includes(name));
 }
 
 function deleteBranch(branch, execFn, dryRun = false) {

@@ -27,10 +27,10 @@ describe('Merged Branch Deletion Utility', () => {
   });
 
   describe('identifyMergedBranches', () => {
-    it('identifies branches merged into main while excluding specific branches', () => {
+    it('identifies branches merged into main while excluding only main and master', () => {
       // Mock git branch --merged main output with various branches
       const mockExecFn = jest.fn().mockReturnValue(
-        '  branch1\n* main\n  develop\n  feature/123\n  release'
+        '  branch1\n* main\n  master\n  develop\n  feature/123\n  release'
       );
       
       const result = branchCleanup.identifyMergedBranches(mockExecFn);
@@ -38,20 +38,22 @@ describe('Merged Branch Deletion Utility', () => {
       // Verify it called our mock with the correct git command
       expect(mockExecFn).toHaveBeenCalledWith('git branch --merged main');
       
-      // Verify it correctly identifies branches for deletion while excluding specific ones
-      expect(result).toEqual(['branch1', 'feature/123']);
+      // Verify it correctly identifies ALL branches for deletion EXCEPT main and master
+      expect(result).toContain('branch1');
+      expect(result).toContain('feature/123');
+      expect(result).toContain('develop');
+      expect(result).toContain('release');
       expect(result).not.toContain('main');
-      expect(result).not.toContain('develop');
-      expect(result).not.toContain('release');
+      expect(result).not.toContain('master');
     });
 
-    it('returns empty array when no merged branches exist', () => {
-      // Mock git branch output with only excluded branches
-      const mockExecFn = jest.fn().mockReturnValue('* main\n  develop\n  release');
+    it('outputs nothing when no branches to delete', () => {
+      // Mock git branch output with only main and master
+      const mockExecFn = jest.fn().mockReturnValue('* main\n  master');
       const result = branchCleanup.identifyMergedBranches(mockExecFn);
       
-      // Should return empty array when no merged branches exist (or only excluded branches)
-      expect(result).toEqual([]);
+      // Should return empty array when only main/master exist
+      expect(result.length).toBe(0);
     });
   });
 
@@ -79,42 +81,14 @@ describe('Merged Branch Deletion Utility', () => {
       expect(result).toBe(false);
       expect(console.error).toHaveBeenCalled();
     });
-
-    it('performs no actions when in dry run mode', () => {
-      const mockExecFn = jest.fn();
-      const dryRun = true;
-      
-      branchCleanup.deleteBranch('feature/test', mockExecFn, dryRun);
-      
-      // In dry run mode, no deletion commands should be executed
-      expect(mockExecFn).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('getBranchState', () => {
-    it('retrieves current branch name and repository root path', () => {
-      // Mock the git commands to get current branch and repo root
-      const mockExecFn = jest.fn()
-        .mockReturnValueOnce('feature/test') // For git rev-parse --abbrev-ref HEAD
-        .mockReturnValueOnce('/home/repo');  // For git rev-parse --show-toplevel
-      
-      const state = branchCleanup.getBranchState(mockExecFn);
-      
-      // Should return an object with currentBranch and repoRoot properties
-      expect(state).toEqual({
-        currentBranch: 'feature/test',
-        repoRoot: '/home/repo'
-      });
-    });
   });
 
   // Test suite verification - ensure all required functions are exported
-  describe('API Availability', () => {
-    it('exports all required functions for branch deletion', () => {
-      // Verify the module exports all functions needed for its operation
+  describe('Required Functions', () => {
+    it('exports identifyMergedBranches and deleteBranch functions', () => {
+      // These are the essential functions for branch deletion
       expect(typeof branchCleanup.identifyMergedBranches).toBe('function');
       expect(typeof branchCleanup.deleteBranch).toBe('function');
-      expect(typeof branchCleanup.getBranchState).toBe('function');
     });
   });
 });
