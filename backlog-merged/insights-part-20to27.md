@@ -104,19 +104,8 @@
     - Human review of all strategic decisions
     - Transparent audit logs of agent reasoning
     - Emergency override capabilities
-  - When >80% of tasks are self-initiated by agents
-  - When code generation accuracy >90% without human edits
-  - When agents critique and debug each other successfully
-  - With mandatory safety guardrails:
-    - Human review of all strategic decisions
-    - Transparent audit logs of agent reasoning
-    - Emergency override capabilities
-  - With mandatory safety guardrails:
-    - Human review of all strategic decisions
-    - Transparent audit logs of agent reasoning
-    - Emergency override capabilities
 
-- At that point, the loop moves to “maintenance mode” — only critical interventions by human
+- At that point, the loop moves to "maintenance mode" — only critical interventions by human
 
 ---
 

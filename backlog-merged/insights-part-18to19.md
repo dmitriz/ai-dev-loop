@@ -1,4 +1,4 @@
-# Insights – Part 18
+# Insights - Parts 18 to 19
 
 - Once the manual loop for processing and archiving insights is stabilized, it can be converted into an autonomous agent loop. Each stage—extraction, chunking, tagging, storing—can be handled by a dedicated bot.
 - A structured folder like `backlog/` can become a dispatch queue for agents: any file dropped there triggers an agent response (e.g., convert insights into todos, group by theme, generate summary).
