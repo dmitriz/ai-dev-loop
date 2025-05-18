@@ -1,4 +1,4 @@
-# Insights – Part 3
+# Insights - Parts 3 to 4
 
 ## On Synthesis vs. Collection
 
@@ -29,7 +29,7 @@
 - The productivity strategy itself must remain agile—subject to revision as patterns emerge.
 - Productivity gains from automation/outsourcing (e.g., agents) must be matched by clarity in how knowledge flows are managed.
 
-# Insights – Part 4
+## Insights - Part 4
 
 ## On Cognitive Relief through Parallel Modes
 

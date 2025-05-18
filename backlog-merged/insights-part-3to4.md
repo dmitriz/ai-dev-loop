@@ -1,4 +1,4 @@
-# Insights – Part 3
+# Insights - Parts 3 to 4
 
 > **Related Topics:** See [Knowledge Management](../insights-by-topic/04-knowledge-management.md), [Feedback Loops](../insights-by-topic/05-feedback-loops.md) and [Productivity Systems](../insights-by-topic/01-productivity-systems.md) for thematic organization of these insights.
 
@@ -31,7 +31,7 @@
 - The productivity strategy itself must remain agile—subject to revision as patterns emerge.
 - Productivity gains from automation/outsourcing (e.g., agents) must be matched by clarity in how knowledge flows are managed.
 
-# Insights – Part 4
+## Insights - Part 4
 
 ## On Cognitive Relief through Parallel Modes
 
