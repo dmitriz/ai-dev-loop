@@ -1,3 +1,9 @@
+---
+part: 11-12
+date: 2025-05-18
+tags: [feedback-loops, archiving, knowledge-management, productivity, perplexity]
+---
+
 # Insights – Part 11
 
 ## On Scaling Feedback Loops

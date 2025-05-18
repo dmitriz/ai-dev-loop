@@ -1,5 +1,7 @@
 # Insights – Part 3
 
+> **Related Topics:** See [Knowledge Management](../insights-by-topic/04-knowledge-management.md), [Feedback Loops](../insights-by-topic/05-feedback-loops.md) and [Productivity Systems](../insights-by-topic/01-productivity-systems.md) for thematic organization of these insights.
+
 ## On Synthesis vs. Collection
 
 - Insight density isn't enough—value lies in synthesis, not just accumulation.
@@ -60,3 +62,7 @@
 - Invest in setup to reduce future friction.
 - Short-term detours: eliminate systemic inefficiencies.
 - Dynamic cost-benefit analysis: now vs. scalable later.
+
+---
+
+> **Navigation:** [Return to Topic Index](../insights-by-topic/README.md) | [Knowledge Management](../insights-by-topic/04-knowledge-management.md) | [Productivity Systems](../insights-by-topic/01-productivity-systems.md)

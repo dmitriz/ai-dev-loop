@@ -30,7 +30,7 @@
 - Tag and link insights to related backlog items or MVPs.
 - Use scripts or AI to propose next actions from insights (auto-summarization, label suggestion).
 
-# Insights – Part 10
+# Insights - Part 10
 
 ## On Strategic Layering of Knowledge and Execution
 

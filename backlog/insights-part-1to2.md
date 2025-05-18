@@ -70,7 +70,9 @@ This document is a structured archive of key insights, observations, strategies,
 
 ---
 
-# Productivity Insights & Information Management - Part 2
+# Insights - Part 2
+
+## Productivity Insights & Information Management
 
 ## Feedback Flow & Perplexity Session Optimization
 

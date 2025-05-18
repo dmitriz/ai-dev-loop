@@ -1,8 +1,17 @@
-# Insights – Part 14
+# In## Scaling Agent Productivity
+
+- Leverage networks of specialized, modular, and collaborative AI models rather than relying on a single model for true productivity gains.
+- Design agent networks like microservices: make each one perform a specific function well and communicate effectively with others.
+- Build agents around predictable inputs and outputs to create easier and more robust chaining.
+- Embrace statelessness to improve modularity—agents without deep memory dependencies are more interchangeable.
+- Separate knowledge agents from execution agents—distinguish "researchers" from "builders" for clearer division of labor.
+- Prioritize interpretable outputs where agents explain their actions to build trust and facilitate debugging. Part 14
+
+[← Part 13](insights-part-13.md) | [Part 16 →](insights-part-16.md)
 
 ## Scaling Agent Productivity
 
-- The true productivity boost doesn’t come from one AI model but from a network of them—specialized, modular, and collaborative.
+- The true productivity boost doesn't come from one AI model but from a network of them—specialized, modular, and collaborative.
 - Envision agent networks like services in a microservices architecture: each does one thing well and communicates with others.
 - Agents should be designed around predictable inputs and outputs. This makes chaining easier and less fragile.
 - Statelessness improves modularity: agents that don't rely on deep memory can be more interchangeable.
@@ -84,6 +93,7 @@
 - Multi-agent consensus pipelines (e.g., PR reviewer + refactor agent + summarizer)
 
 # End of insights-part-14
+
 # Insights – Part 15
 
 ## Systems for Reducing Mental Load
@@ -130,6 +140,7 @@
   - Include a calendar-aware picker: don’t assign deep work 10 min before a meeting
   - Consider implementing adaptive weighting based on historical task completion data and urgency levels
 - Picker should provide 1-sentence justification: “This is next because it’s urgent and unblocked.”
+
 ## Unified Command Interface
 
 - Interact via a single CLI: `npm start` or `./dev`
@@ -233,6 +244,7 @@
 ## Summary
 
 You are now developing a layered productivity ecosystem:
+
 - Action layer (task picker, session start, timer)
 - Intelligence layer (labeling, prioritization, summarizing)
 - Feedback layer (logging, reflection, agent tuning)
