@@ -1,4 +1,4 @@
-# Insights – Part 1
+# Insights - Part 1
 
 This document is a structured archive of key insights, observations, strategies, and reflections captured during recent MVP planning, productivity exploration, and feedback sessions. It is intended to preserve long-term value and serve as a resource for future reference and decision-making.
 
@@ -20,7 +20,7 @@ This document is a structured archive of key insights, observations, strategies,
   - Execute them
   - Summarize outcomes
   - Self-improve
-- **Minimal Task Cycler MVP:** Focused on a `npm start` command that:
+- **Minimal Task Cycler MVP:** Focused on an `npm start` command that:
   - Picks next task
   - Starts/stops session timer
   - Enforces breaks
@@ -48,7 +48,7 @@ This document is a structured archive of key insights, observations, strategies,
 ## 5. Session Dynamics and Timeboxing
 
 - **Dynamic cycles preferred:** Classic 90-minute pomodoros too long for AI-enhanced workflows. 20–25 minute focus with 3–5 minute movement breaks proves more effective.
-- **Hard breaks enforced by script:** The minimal task cycler should prevent restarting a session unless a break has been taken. Encourages physical reset and mental clarity.
+- **Hard breaks enforced by script:** The Minimal Task Cycler should prevent restarting a session unless a break has been taken. Encourages physical reset and mental clarity.
 
 ---
 
@@ -69,5 +69,3 @@ This document is a structured archive of key insights, observations, strategies,
 - **System bottleneck logging:** Use of these files to track and flag persistent bottlenecks for potential agent automation later.
 
 ---
-
-[End of insights-part-1.md]
