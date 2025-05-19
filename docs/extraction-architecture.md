@@ -44,7 +44,7 @@ Each returns a common schema:
   "source": "...",
   "prompt": "...",
   "completion": "...",
-  "tags": [...],
+  "tags": ["example-tag-1", "example-tag-2"], // e.g., ["search-enhancement", "llm-interaction"]
   "path": "...",
   "linked_repo": "..."
 }
