@@ -53,7 +53,7 @@ This document defines the foundational rules, principles, and instructions deriv
 
 ## Prohibited Practices
 
-- No use of environment variables for secrets—use container-internal paths.
+- No hardcoded secrets in container images—use environment variables or dedicated secret management solutions.
 - No meaningless test fixtures or wrapper duplication.
 - No numeric ticket IDs (e.g. `B001`) for backlog tracking, to encourage descriptive names that reflect domain/purpose and improve searchability.
 - No tables in core documentation—use ordered or unordered semantic lists.
