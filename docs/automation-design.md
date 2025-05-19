@@ -6,15 +6,15 @@ This document defines the foundational rules, principles, and instructions deriv
 
 ## Table of Contents
 
-- Working Philosophy
-- Language and Terminology
-- Approved Structures
-- Prohibited Practices
-- Instruction Protocol
-- Behavioral Checkpoints
-- Copilot/AIAgent Mediation
-- Backlog Management Rules
-- Naming Conventions
+- [Working Philosophy](#working-philosophy)
+- [Language and Terminology](#language-and-terminology)
+- [Approved Structures](#approved-structures)
+- [Prohibited Practices](#prohibited-practices)
+- [Instruction Protocol](#instruction-protocol)
+- [Behavioral Checkpoints](#behavioral-checkpoints)
+- [Copilot/AIAgent Mediation](#copilotaiagent-mediation)
+- [Backlog Management Rules](#backlog-management-rules)
+- [Naming Conventions](#naming-conventions)
 
 ---
 
@@ -25,7 +25,7 @@ This document defines the foundational rules, principles, and instructions deriv
 - No superficial responses. Every idea must be grounded in purpose.
 - Everything must be inspectable and auditable.
 - Automation should cut manual effort, not repackage complexity.
-- Repetition is anti-pattern. Write once, link/reference later.
+- Repetition is an anti-pattern. Write once; link or reference later.
 - All agent behavior must be constrained to deterministic boundaries.
 - Execution is less important than comprehension.
 
@@ -104,10 +104,8 @@ This document defines the foundational rules, principles, and instructions deriv
 
 ## Naming Conventions
 
-- kebab-case filenames only
-- Prompts: `prompt-<area>.md`
-- Output: `output-<artifact>.(json|md)`
-- Scripts: `run-<action>.py`
+- `kebab-case` filenames only
+- `Prompt` files: `prompt-<area>.md`
+- `Output` files: `output-<artifact>.(json|md)`
+- `Scripts`: `run-<action>.py`
 - Folder structure must express meaning, not arbitrary nesting
-
----
