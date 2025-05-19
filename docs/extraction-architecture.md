@@ -45,6 +45,6 @@ Each returns a common schema:
   "prompt": "...",
   "completion": "...",
   "tags": ["example-tag-1", "example-tag-2"], // e.g., ["search-enhancement", "llm-interaction"]
-  "path": "...",
+  "path": "/path/to/relevant/file_or_artifact.py", // e.g., path to source code file, notebook, or log
   "linked_repo": "https://github.com/user/project", // e.g., URL to the associated code repository if applicable
 }
