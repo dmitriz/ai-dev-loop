@@ -106,7 +106,7 @@ This document defines the foundational rules, principles, and instructions deriv
 
 - kebab-case filenames only
 - Prompts: `prompt-<area>.md`
-- Output: `output-<artifact>.json`
+- Output: `output-<artifact>.(json|md)`
 - Scripts: `run-<action>.py`
 - Folder structure must express meaning, not arbitrary nesting
 
