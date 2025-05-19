@@ -25,7 +25,6 @@ if [[ ${#merged_branches[@]} -eq 0 ]]; then
   echo "No merged branches to delete."
   exit 0
 fi
-fi
 
 echo "Merged branches to delete:"
 echo "$merged_branches"
