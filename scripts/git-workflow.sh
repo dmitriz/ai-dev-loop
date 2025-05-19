@@ -40,7 +40,7 @@ else
   # Pull latest changes from remote if the branch exists remotely
   if git ls-remote --heads origin "$current_branch" | grep -q "$current_branch"; then
     echo "Remote branch exists, pulling latest changes..."
-    git pull --tags origin "$current_branch" || echo "Warning: Could not pull from remote branch"
+    git pull --tags origin "$current_branch" || handle_error "Failed to pull from remote branch '$current_branch'. Please resolve conflicts manually and re-run."
   else
     echo "No remote branch found. If this is a new branch, you'll need to push it."
   fi
