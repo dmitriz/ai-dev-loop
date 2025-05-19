@@ -27,7 +27,8 @@ else
 fi
 
 echo "Checking for merged remote branches..."
-merged_remote=$(git branch -r --merged main | grep -v 'origin/main' | sed 's/origin\///' | sed 's/^[[:space:]]*//')
+# Get merged remote branches with a safer approach that won't fail
+merged_remote=$(git branch -r --merged main 2>/dev/null | grep -v 'origin/main' | grep 'origin/' | sed 's/origin\///' | sed 's/^[[:space:]]*//' || echo "")
 
 if [ -z "$merged_remote" ]; then
   echo "No merged remote branches to delete."
@@ -36,12 +37,19 @@ else
   echo "$merged_remote"
   echo "To delete these remote branches, you can use: git push origin --delete BRANCH_NAME"
   
-  # Uncomment the following lines if you want to automatically delete remote branches
-  # echo "Deleting remote branches..."
-  # for branch in $merged_remote; do
-  #   git push origin --delete "$branch"
-  # done
-  # echo "Remote merged branches have been deleted."
+  # Ask if user wants to delete remote branches
+  echo "Do you want to delete these remote branches? (y/n)"
+  read -r answer
+  if [[ "$answer" == "y" ]]; then
+    echo "Deleting remote branches..."
+    for branch in $merged_remote; do
+      echo "Deleting remote branch: $branch"
+      git push origin --delete "$branch" || echo "Failed to delete $branch"
+    done
+    echo "Remote merged branches have been deleted."
+  else
+    echo "Remote branch deletion skipped."
+  fi
 fi
 
 echo "Branch cleanup completed!"
