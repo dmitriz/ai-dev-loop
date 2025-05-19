@@ -55,7 +55,7 @@ This document defines the foundational rules, principles, and instructions deriv
 
 - No use of environment variables for secrets—use container-internal paths.
 - No meaningless test fixtures or wrapper duplication.
-- No numeric ticket IDs (e.g. `B001`) for backlog tracking.
+- No numeric ticket IDs (e.g. `B001`) for backlog tracking, to encourage descriptive names that reflect domain/purpose and improve searchability.
 - No tables in core documentation—use ordered or unordered semantic lists.
 - No implicit logic—every flow must be explicit and inspectable.
 - No unsandboxed AI execution.
