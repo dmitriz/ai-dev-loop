@@ -154,6 +154,6 @@ Use internal container directories for secrets. Do not expose via environment or
 
 ### Status: Resolved (Secrets)
 
-Resolved. See `automation-design.md`.
+Resolved. See [`automation-design.md`](./automation-design.md).
 
 ---
