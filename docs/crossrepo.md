@@ -49,8 +49,8 @@ This document defines the architecture for orchestrating automation across multi
 
 ## Next Steps
 
-1. Define tag/trigger schema (considering direct and indirect dependencies)
-2. Build watcher for GitHub tag events
-3. Build cross-repo patch generator
-4. Decide on orchestration policy location
-5. Research and define secure secret management strategy
+- Define tag/trigger schema (considering direct and indirect dependencies)
+- Build watcher for GitHub tag events
+- Build cross-repo patch generator
+- Decide on orchestration policy location
+- Research and define secure secret management strategy
