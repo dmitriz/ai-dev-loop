@@ -27,7 +27,7 @@ This document captures a comprehensive, structured list of real-world automation
 
 - **Issue**: Prompts and completions inside chat interfaces are not traceable or version-controlled
 - **Impact**: Impossible to audit, repeat, or debug AI decisions
-- **Need**: File-based prompt–completion interface
+- **Need**: Mechanisms for tracing, versioning, and reproducing AI interactions
 
 ---
 
@@ -35,7 +35,7 @@ This document captures a comprehensive, structured list of real-world automation
 
 - **Issue**: Agents operate on full workspace or external systems without isolation
 - **Impact**: Risk of unintended changes, data exposure, or logic errors
-- **Need**: Isolated, containerized sandbox with strict I/O policy
+- **Need**: Robust isolation mechanisms and configurable permission models for agent execution to prevent unintended side-effects
 
 ---
 
@@ -82,7 +82,7 @@ This document captures a comprehensive, structured list of real-world automation
 ## Problem: Secrets Are Exposed Through Common ENV Patterns
 
 - **Issue**: Environment variables are often used for secrets, leading to leakage via logs, subprocesses, or memory
-- **Impact**: Security risk
+- **Impact**: Security risk including unauthorized system access, potential data breaches, and compliance violations
 - **Need**: Container-internal, non-host-mounted secrets directory
 
 ---
