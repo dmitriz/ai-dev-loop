@@ -10,7 +10,7 @@ This document defines the architecture for extracting, organizing, and reusing A
   - Copilot SQLite DB
   - GPT chat exports
   - Gemini sessions
-  - Perplexity and others
+  - Other AI chat services (e.g., Perplexity, Claude)
 - Store extracted entries in structured, version-controlled Markdown or JSON
 - Allow prompt lookup, topic filtering, and future summarization
 - Maintain file-based architecture (no database dependency)
@@ -25,7 +25,7 @@ This document defines the architecture for extracting, organizing, and reusing A
   - Source (copilot, gpt, etc.)
   - Tags
   - Linked repo or file path (optional)
-- Output lives in flat folder structure, easily grep/searchable
+- Output lives in a flat folder structure, easily searchable via grep
 
 ---
 
@@ -35,7 +35,7 @@ This document defines the architecture for extracting, organizing, and reusing A
 - Tag clustering or topic classification
 - Conversation threading (multi-turn prompt sets)
 - Link prompts to test cases, doc references, or code locations
-- CLI interface for search and preview
+- CLI for search and preview
 
 ---
 
@@ -56,3 +56,6 @@ copilot
 
 # Tags
 login, testing, authentication
+```
+
+Save this example as a `.md` file in your prompts directory.
