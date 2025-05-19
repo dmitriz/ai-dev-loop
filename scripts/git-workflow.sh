@@ -1,7 +1,7 @@
 #!/bin/bash
+set -euo pipefail
 # GitHub Copilot Task Workflow Script
 # This script implements the workflow guide for maintaining a clean, consistent development workflow
-
 # Function to handle errors
 handle_error() {
   echo "ERROR: $1"
