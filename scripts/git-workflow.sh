@@ -1,4 +1,5 @@
 #!/bin/bash
+set -uo pipefail
 set -euo pipefail
 # GitHub Copilot Task Workflow Script
 # This script implements the workflow guide for maintaining a clean, consistent development workflow
