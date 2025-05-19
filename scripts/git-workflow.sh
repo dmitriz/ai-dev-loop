@@ -58,7 +58,15 @@ fi
 # Function to run tests at the end of a task
 run_tests() {
   echo "Running tests..."
-  npm test || handle_error "Tests failed! Please fix before proceeding."
+  if [ -f "package.json" ]; then
+    npm test || handle_error "Tests failed! Please fix before proceeding."
+  elif [ -f "pom.xml" ]; then
+    mvn test || handle_error "Tests failed! Please fix before proceeding."
+  elif [ -f "requirements.txt" ] || [ -f "setup.py" ]; then
+    pytest || handle_error "Tests failed! Please fix before proceeding."
+  else
+    echo "Warning: Could not detect project type. Skipping tests."
+  fi
   echo "Tests passed successfully!"
 }
 
