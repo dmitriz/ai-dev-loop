@@ -1,0 +1,51 @@
+[1mdiff --git a/docs/agent-control.md b/docs/agent-control.md[m
+[1mindex 761d44e..757f4a7 100644[m
+[1m--- a/docs/agent-control.md[m
+[1m+++ b/docs/agent-control.md[m
+[36m@@ -8,6 +8,8 @@[m [mThis document defines the architecture for file-based AI agent invocation, where[m
+ [m
+ - All agent prompts must be stored in `.md` files before execution[m
+ - All outputs must be saved in a deterministic format (Markdown/JSON)[m
+[32m+[m[32m  - JSON is preferred for machine processing and structured data[m
+[32m+[m[32m  - Markdown is preferred for human readability and documentation[m
+ - Agents must operate within scoped inputs and outputs[m
+ - No direct system calls or uncontrolled interaction[m
+ - File-based interaction ensures reproducibility and audit[m
+[36m@@ -17,30 +19,26 @@[m [mThis document defines the architecture for file-based AI agent invocation, where[m
+ ## Confirmed Design[m
+ [m
+ - **Input**: `ai-prompts/*.md`[m
+[31m-- **Output**: `/ai-output/*.json` or `.md` (Note: Markdown outputs intended for automated processing should follow a consistent, predefined structure to ensure deterministic interpretation)[m
+[32m+[m[32m- **Output**: `/ai-output/*.json` or `.md` (Note: Markdown outputs intended for automated processing should follow a consistent, predefined structure with standardized headings and sections to ensure deterministic interpretation)[m
+ - Prompts must contain:[m
+   - Instruction[m
+[31m-  - Context (file paths, summaries of prior related agent outputs or key documents)[m
+[31m-  - Source (user or agent)[m
+[32m+[m[32m  - Context (file paths, detailed summaries of specific prior related agent outputs or key documents)[m
+[32m+[m[32m  - Source (user or agent) - identifies the originator of the prompt for provenance tracking[m
+ - Output must include:[m
+   - Raw completion[m
+   - Timestamp[m
+[31m-  - Post-processed (optional) summary[m
+[31m-  - Review status (e.g., pending, approved, rejected; optional or required based on workflow)[m
+[32m+[m[32m  - Post-processed (optional) summary of the raw completion for quick reference[m
+[32m+[m[32m  - Review status (e.g., pending, approved, rejected) - tracks validation state of the output[m
+   - Context (file paths, summaries of prior related agent outputs or key documents)[m
+   - Source (user or agent)[m
+[31m-- Output must include:[m
+[31m-  - Raw completion[m
+[31m-- File watcher: auto-run agent on prompt file creation[m
+[31m-  - (Ensures triggered agents adhere to the approved scope and interaction limits)[m
+[31m-  - Post-processed (optional) summary[m
+[31m-  - Review status (e.g., pending, approved, rejected; optional or required based on workflow)[m
+ [m
+ ---[m
+ [m
+ ## Proposed Features[m
+ [m
+ - File watcher: auto-run agent on prompt file creation[m
+[32m+[m[32m  - Runs in a sandboxed environment with explicit permissions[m
+[32m+[m[32m  - Only interacts with designated input/output files to maintain the "no uncontrolled interaction" principle[m
+ - Prompt type registry (test, doc, plan, refactor, etc.)[m
+ - CLI agent runner: `run-agent prompt-name.md`[m
+ - Replay logs to compare agent responses over time[m
