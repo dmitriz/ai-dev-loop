@@ -82,7 +82,7 @@ Standardize prompt architecture:
 
 ### Status: In Progress
 
-Standard documented in `automation-design.md`. Implementation in progress.
+Standard documented in [`automation-design.md`](./automation-design.md). Implementation in progress.
 
 ---
 
