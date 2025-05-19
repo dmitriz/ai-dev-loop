@@ -13,8 +13,9 @@ echo "Fetching latest from remote..."
 git fetch --all --prune
 
 # Switch to main branch to get correct merge information
-echo "Switching to main branch..."
-git checkout main
+DEFAULT_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
+echo "Switching to $DEFAULT_BRANCH branch..."
+git checkout "$DEFAULT_BRANCH"
 
 # Handle local merged branches
 echo "Looking for local merged branches..."
