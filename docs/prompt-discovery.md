@@ -52,7 +52,7 @@ You should assert the redirect, session, and user context...
 copilot
 
 # Timestamp
-2024-05-20 15:42
+2024-05-20T15:42:00Z
 
 # Tags
 login, testing, authentication
