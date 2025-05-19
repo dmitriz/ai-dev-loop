@@ -46,5 +46,5 @@ Each returns a common schema:
   "completion": "...",
   "tags": ["example-tag-1", "example-tag-2"], // e.g., ["search-enhancement", "llm-interaction"]
   "path": "...",
-  "linked_repo": "..."
+  "linked_repo": "https://github.com/user/project", // e.g., URL to the associated code repository if applicable
 }
