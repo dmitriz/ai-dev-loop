@@ -40,7 +40,7 @@ Modular extractors, each responsible for one data origin:
 Each returns a common schema:
 ```json
 {
-  "timestamp": "...",
+  "timestamp": "YYYY-MM-DDTHH:mm:ssZ", // Example: ISO 8601 format
   "source": "...",
   "prompt": "...",
   "completion": "...",
