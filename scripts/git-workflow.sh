@@ -12,13 +12,21 @@ set -euo pipefail
 #  - Generating pull request URL dynamically based on repository
 #
 # Usage:
-#  - To start a new task: ./git-workflow.sh [new-branch-name]
+#  - To start a new task: ./git-workflow.sh start [new-branch-name]
 #  - To finish a task:    ./git-workflow.sh finish
 #
 # Note: The script dynamically detects your repository URL and test framework.
 # Function to handle errors
 handle_error() {
   echo "ERROR: $1"
+  exit 1
+}
+
+# Function to show usage
+show_usage() {
+  echo "Usage:"
+  echo "  - To start a new task: ./git-workflow.sh start [new-branch-name]"
+  echo "  - To finish a task:    ./git-workflow.sh finish"
   exit 1
 }
 
@@ -35,39 +43,62 @@ fi
 current_branch=$(git branch --show-current)
 echo "Current branch: $current_branch"
 
-# Check if on main branch
-if [ "$current_branch" = "main" ]; then
-  echo "On main branch, pulling latest changes and creating feature branch..."
-  
-  # Pull latest changes from main
-  git pull origin main || handle_error "Failed to pull from main branch"
-  
-  # Prompt for new branch name if not provided
-  if [ -z "$1" ]; then
-    read -p "Enter new feature branch name: " branch_name
-  else
-    branch_name=$1
-  fi
-  
-  # Create and switch to new branch
-  git checkout -b "$branch_name" || handle_error "Failed to create branch: $branch_name"
-  echo "Successfully created and switched to branch: $branch_name"
-else
-  echo "Already on feature branch: $current_branch"
-  
-  # Try to commit any local changes
-  echo "Attempting to commit any local changes..."
-  git add .
-  git commit -m "WIP: Saving progress before starting new task" || echo "No changes to commit"
-  
-  # Pull latest changes from remote if the branch exists remotely
-  if git ls-remote --heads origin "$current_branch" | grep -q "$current_branch"; then
-    echo "Remote branch exists, pulling latest changes..."
-    git pull --tags origin "$current_branch" || handle_error "Failed to pull from remote branch '$current_branch'. Please resolve conflicts manually and re-run."
-  else
-    echo "No remote branch found. If this is a new branch, you'll need to push it."
-  fi
+# Check command argument
+if [ $# -eq 0 ]; then
+  echo "ERROR: No command specified."
+  show_usage
 fi
+
+# Process based on command
+case "$1" in
+  "start")
+    # Check if on main branch
+    if [ "$current_branch" = "main" ]; then
+      echo "On main branch, pulling latest changes and creating feature branch..."
+      
+      # Pull latest changes from main
+      git pull origin main || handle_error "Failed to pull from main branch"
+      
+      # Prompt for new branch name if not provided
+      if [ -z "${2:-}" ]; then
+        read -p "Enter new feature branch name: " branch_name
+      else
+        branch_name=$2
+      fi
+      
+      # Create and switch to new branch
+      git checkout -b "$branch_name" || handle_error "Failed to create branch: $branch_name"
+      echo "Successfully created and switched to branch: $branch_name"
+    else
+      echo "Already on feature branch: $current_branch"
+      
+      # Try to commit any local changes
+      echo "Attempting to commit any local changes..."
+      git add .
+      git commit -m "WIP: Saving progress before starting new task" || echo "No changes to commit"
+      
+      # Pull latest changes from remote if the branch exists remotely
+      if git ls-remote --heads origin "$current_branch" | grep -q "$current_branch"; then
+        echo "Remote branch exists, pulling latest changes..."
+        git pull --tags origin "$current_branch" || handle_error "Failed to pull from remote branch '$current_branch'. Please resolve conflicts manually and re-run."
+      else
+        echo "No remote branch found. If this is a new branch, you'll need to push it."
+      fi
+    fi
+    ;;
+    
+  "finish")
+    # Update current branch in case it changed
+    current_branch=$(git branch --show-current)
+    run_tests
+    push_changes
+    ;;
+    
+  *)
+    echo "ERROR: Unknown command '$1'"
+    show_usage
+    ;;
+esac
 
 # Function to run tests at the end of a task
 run_tests() {
@@ -159,13 +190,5 @@ push_changes() {
     echo "To create a pull request, please visit your repository's web interface."
   fi
 }
-
-# If argument is "finish", run the end-of-task workflow
-if [ "$1" = "finish" ]; then
-  # Update current branch in case it changed
-  current_branch=$(git branch --show-current)
-  run_tests
-  push_changes
-fi
 
 echo "Git workflow completed!"
