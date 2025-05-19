@@ -25,9 +25,17 @@ This document outlines the architecture for a unified test validation and feedba
 
 ## Proposed Ideas
 
+**NLP Enhancements:**
+
 - Use NLP to match test name against function behavior
-- Rank test issues by severity (logic, clarity, coverage)
 - Link test back to related documentation (docstrings, README)
+
+**Quality Analysis:**
+
+- Rank test issues by severity (logic, clarity, coverage)
+
+**Aggregation & Summarization:**
+
 - Feedback summarizer: generate patchable suggestions for each test
 - Aggregate comments across multiple PRs into test-centered views
 
@@ -38,7 +46,25 @@ This document outlines the architecture for a unified test validation and feedba
 - Do we validate all tests continuously or only new PRs?
 - Should feedback generation be synchronous (on commit) or batched?
 - How do we allow AI to propose test rewrites while enforcing constraints?
+- What is the desired granularity of feedback (per test function, per file, or per assertion)?
 
 ---
 
 ## Output Schema (Draft)
+
+```json
+{
+  "test_file": "test_auth.py",
+  "test_name": "test_login_success",
+  "issues": [
+    "Behavior drift: test claims login success but never asserts session",
+    "Only checks string match, not redirect"
+  ],
+  "score": 47,  /* Range: 0-100, higher is better */
+  "comments": [
+    "Needs assertion for redirected route",
+    "Test name overstates logic"
+  ],
+  "recommended_fix": "Add assertion for valid session token and redirect"
+}
+```
