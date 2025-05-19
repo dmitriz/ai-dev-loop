@@ -1,55 +1,80 @@
 #!/usr/bin/env bash
-# A script to safely delete merged branches
+# A script to safely delete merged branches (both local and remote)
 set -euo pipefail
 
 echo "=== Branch Cleanup Script ==="
+
+# Save current branch to return to it later
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+echo "Current branch: $current_branch"
+
+# Make sure we're working with the latest information
+echo "Fetching latest from remote..."
+git fetch --all --prune
+
+# Switch to main branch to get correct merge information
 echo "Switching to main branch..."
 git checkout main
 
-echo "Updating from remote..."
-git pull origin main
+# Handle local merged branches
+echo "Looking for local merged branches..."
+merged_local=$(git branch --merged main | grep -vE '^\*|main|HEAD' || echo "")
 
-echo "Fetching latest branch information..."
-git fetch --all --prune
-
-echo "Finding merged local branches..."
-merged_branches=$(git branch --merged main | grep -vE '^\*|main|HEAD' | sed 's/^[[:space:]]*//')
-
-if [ -z "$merged_branches" ]; then
-  echo "No merged local branches to delete."
+if [ -z "$merged_local" ]; then
+  echo "No local merged branches found."
 else
-  echo "The following local branches will be deleted:"
-  echo "$merged_branches"
+  echo "Found local merged branches:"
+  echo "$merged_local"
+  echo "Deleting local merged branches..."
   
-  # Automatically respond 'y' to git branch -d
-  echo "$merged_branches" | xargs -r git branch -d
-  echo "Local merged branches have been deleted."
+  # Process each branch
+  while IFS= read -r branch; do
+    if [ -n "$branch" ]; then
+      branch=$(echo "$branch" | xargs) # Trim whitespace
+      echo "Deleting local branch: $branch"
+      git branch -d "$branch" || echo "Failed to delete branch $branch"
+    fi
+  done <<< "$merged_local"
+  
+  echo "Local merged branches deleted."
 fi
 
-echo "Checking for merged remote branches..."
-# Get merged remote branches with a safer approach that won't fail
-merged_remote=$(git branch -r --merged main 2>/dev/null | grep -v 'origin/main' | grep 'origin/' | sed 's/origin\///' | sed 's/^[[:space:]]*//' || echo "")
+# Handle remote merged branches
+echo "Looking for remote merged branches..."
+merged_remote=$(git branch -r --merged origin/main | grep -v 'origin/main' | grep -v 'origin/HEAD' | sed 's/origin\///' || echo "")
 
 if [ -z "$merged_remote" ]; then
-  echo "No merged remote branches to delete."
+  echo "No remote merged branches found."
 else
-  echo "The following remote branches can be deleted:"
+  echo "Found remote merged branches:"
   echo "$merged_remote"
-  echo "To delete these remote branches, you can use: git push origin --delete BRANCH_NAME"
-  
-  # Ask if user wants to delete remote branches
   echo "Do you want to delete these remote branches? (y/n)"
   read -r answer
+  
   if [[ "$answer" == "y" ]]; then
-    echo "Deleting remote branches..."
-    for branch in $merged_remote; do
-      echo "Deleting remote branch: $branch"
-      git push origin --delete "$branch" || echo "Failed to delete $branch"
-    done
-    echo "Remote merged branches have been deleted."
+    echo "Deleting remote merged branches..."
+    
+    # Process each branch
+    while IFS= read -r branch; do
+      if [ -n "$branch" ]; then
+        branch=$(echo "$branch" | xargs) # Trim whitespace
+        echo "Deleting remote branch: $branch"
+        git push origin --delete "$branch" || echo "Failed to delete remote branch $branch"
+      fi
+    done <<< "$merged_remote"
+    
+    echo "Remote merged branches deleted."
   else
     echo "Remote branch deletion skipped."
   fi
+fi
+
+# Return to the original branch
+if [ "$current_branch" != "main" ]; then
+  echo "Returning to original branch: $current_branch"
+  git checkout "$current_branch" || echo "Failed to return to branch $current_branch"
+else
+  echo "Already on main branch."
 fi
 
 echo "Branch cleanup completed!"
