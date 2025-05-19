@@ -56,7 +56,7 @@ This document defines the foundational rules, principles, and instructions deriv
 - No hardcoded secrets in container images—use environment variables or dedicated secret management solutions.
 - No meaningless test fixtures or wrapper duplication.
 - No numeric ticket IDs (e.g. `B001`) for backlog tracking, to encourage descriptive names that reflect domain/purpose and improve searchability.
-- No tables in core documentation—use ordered or unordered semantic lists.
+- Use tables only for structured comparative data; prefer semantic lists for sequential or hierarchical information.
 - No implicit logic—every flow must be explicit and inspectable.
 - No unsandboxed AI execution.
 - No direct LLM interactions without traceable `.md` source.
