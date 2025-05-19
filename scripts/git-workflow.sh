@@ -88,6 +88,8 @@ push_changes() {
 
 # If argument is "finish", run the end-of-task workflow
 if [ "$1" = "finish" ]; then
+  # Update current branch in case it changed
+  current_branch=$(git branch --show-current)
   run_tests
   push_changes
 fi
