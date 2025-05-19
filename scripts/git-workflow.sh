@@ -8,6 +8,15 @@ handle_error() {
   exit 1
 }
 
+# Check if git is installed and current directory is a git repository
+if ! command -v git &> /dev/null; then
+  handle_error "Git is not installed. Please install git first."
+fi
+
+if ! git rev-parse --is-inside-work-tree &> /dev/null; then
+  handle_error "Not in a git repository. Please run this script from a git repository."
+fi
+
 # Get current branch
 current_branch=$(git branch --show-current)
 echo "Current branch: $current_branch"
