@@ -6,7 +6,6 @@
 
 - **Features:** AI-powered ghost-text suggestions, natural language to command, Agent Mode (AI runs commands), block-based UI.
 - **Platforms:** Windows, macOS, Linux.
-- **Platforms:** Windows, macOS, Linux.
 - **Pricing:** Freemium. Free tier (300 AI req/mo), Pro ($15/mo, 1000 req), Turbo ($40/mo, 3000 req).
 - **API Key:** Not required (unless Enterprise BYOLLM).
 - **Autonomy:** Agent Mode allows regex-based allow/deny for AI-initiated commands only, *not* for user-typed commands. No autonomous code execution for user or external agents.
@@ -85,9 +84,7 @@
 - **Features:** AI workflow and automation tool for devs; natural language to code/shell, automation recipes, batch agent workflows.
 - **Platforms:** Web-based, desktop agent (beta).
 - **Pricing:** Free trial, paid plans in roadmap.
-- **Autonomy:** Can run in full autonomous mode (`--yes` or "autopilot")—executes any LLM command without prompting.
-  WARNING: Enabling full autonomy may introduce significant security risks; use only in secure, isolated environments.
-- **Autonomy:** Manual approval by default; supports batch/recipe flows with partial autonomy.
+- **Autonomy:** Can run in full autonomous mode (`--yes` or "autopilot")—executes any LLM command without prompting in this mode. Manual approval by default; supports batch/recipe flows with partial autonomy.
 - **Notes:** Early-stage, focused on automating repetitive dev tasks and scripts.
 
 ---
@@ -143,7 +140,7 @@ No terminal currently provides both inline collapsibility and direct user annota
 
 ---
 
-### Last updated: May 2024
+### Last updated: May 2025
 
 - **Best for Autonomous AI Coding/Execution:** Open Interpreter (max autonomy), Aider (code-focused, some limits).
 - **Best for Safe, Regex-Pattern Control:** Warp Terminal Agent Mode (but only for its internal AI agent, not user input or external LLMs).
@@ -155,5 +152,3 @@ No terminal currently provides both inline collapsibility and direct user annota
 ---
 
 **Note:** No tool today fully combines IDE/editor integration, true autonomous execution, block-based collapsibility, inline annotation, and fine-grained boundaries out of the box.
-
-### Last updated: May 2025
