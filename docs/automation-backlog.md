@@ -14,7 +14,7 @@ AI-generated solutions often repeat previously answered problems. Copilot offers
 
 ### Proposed Solution: Chat History Extraction
 
-Build a local tool that extracts `.db` chat history from Copilot, dumps it into Markdown, and indexes it.
+Build a local tool that extracts `.db` chat history from Copilot, dumps it into Markdown, and indexes it. Specify the local `.db` file location (e.g., `~/.copilot/history.db`) and the expected output directory (e.g., `~/copilot-exports`).
 
 ### Status: Accepted
 
@@ -36,9 +36,9 @@ Copilot and similar tools generate tests that:
 
 Checker pipeline with prompt templates and AI evaluation to:
 
-- Detect behavior drift
+- Detect behavior drift (e.g., changes in expected test behavior over time)
 - Enforce docstring/code alignment
-- Score test meaningfulness
+- Score test meaningfulness (e.g., meaningful assertions, coverage of edge cases)
 
 ### Status: Design Phase
 
@@ -60,6 +60,8 @@ Use Docker containers with:
 - Write access only to `/workspace`
 - Mounted readonly source directories
 
+Reference CIS Docker benchmarks or container scanning tools (e.g., Trivy, Docker Bench for Security) for sandbox enforcement.
+
 ### Status: Deferred
 
 Deferred until viable agent platform is selected
@@ -77,8 +79,17 @@ Inconsistency in AI tool usage and interaction format—prompts embedded in chat
 Standardize prompt architecture:
 
 - Markdown-controlled `.md` files
-- Input stored in `/ai-prompts`
-- Output stored in `/ai-output`
+- Input stored in `/ai-prompts` (configurable via `config.json`)
+- Output stored in `/ai-output` (configurable via `config.json`)
+
+Example configuration snippet:
+
+```json
+{
+  "inputDir": "/ai-prompts",
+  "outputDir": "/ai-output"
+}
+```
 
 ### Status: In Progress
 
@@ -100,6 +111,11 @@ Build a discovery engine that:
 - Indexes semantic content
 - Supports full-text + embedding search
 
+Preferred technologies:
+
+- Search engine: Elasticsearch or Pinecone
+- Embedding library: SentenceTransformers or OpenAI embeddings
+
 ### Status: Planned
 
 Planned
@@ -119,6 +135,12 @@ Script or extension that:
 - Extracts PR comment threads
 - Ranks by type (e.g., logic error, naming, style)
 - Writes feedback summary into repo for AI to act on
+
+Example CLI:
+
+```bash
+extract-feedback --repo my-repo --output feedback-summary.md
+```
 
 ### Status: Backlog
 
@@ -151,6 +173,12 @@ ENV vars are not secure: leak to subprocesses, stored in memory, visible in logs
 ### Decision: Use Internal Container Dirs
 
 Use internal container directories for secrets. Do not expose via environment or mounted host paths.
+
+Recommended tools for secret management:
+
+- HashiCorp Vault
+- AWS Secrets Manager
+- Kubernetes Secrets
 
 ### Status: Resolved (Secrets)
 
