@@ -16,16 +16,25 @@ This document defines the architecture for file-based AI agent invocation, where
 
 ## Confirmed Design
 
-- **Input**: `/ai-prompts/*.md`
-- **Output**: `/ai-output/*.json` or `.md`
+- **Input**: `ai-prompts/*.md`
+- **Output**: `/ai-output/*.json` or `.md` (Note: Markdown outputs intended for automated processing should follow a consistent, predefined structure to ensure deterministic interpretation)
 - Prompts must contain:
   - Instruction
-  - Context (file paths, summaries)
+  - Context (file paths, summaries of prior related agent outputs or key documents)
   - Source (user or agent)
 - Output must include:
   - Raw completion
   - Timestamp
   - Post-processed (optional) summary
+  - Review status (e.g., pending, approved, rejected; optional or required based on workflow)
+  - Context (file paths, summaries of prior related agent outputs or key documents)
+  - Source (user or agent)
+- Output must include:
+  - Raw completion
+- File watcher: auto-run agent on prompt file creation
+  - (Ensures triggered agents adhere to the approved scope and interaction limits)
+  - Post-processed (optional) summary
+  - Review status (e.g., pending, approved, rejected; optional or required based on workflow)
 
 ---
 
