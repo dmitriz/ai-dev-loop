@@ -1,6 +1,6 @@
 # Test Reviewer
 
-This file defines the architecture for a unified test validation and feedback system. It evaluates the quality of tests from both semantic and behavioral perspectives and includes logic to process PR feedback and reviewer comments as part of a test improvement loop.
+This document outlines the architecture for a unified test validation and feedback system. It evaluates test quality from both semantic and behavioral perspectives and integrates pull request feedback into a continuous test improvement loop.
 
 ---
 
@@ -42,19 +42,3 @@ This file defines the architecture for a unified test validation and feedback sy
 ---
 
 ## Output Schema (Draft)
-
-```json
-{
-  "test_file": "test_auth.py",
-  "test_name": "test_login_success",
-  "issues": [
-    "Behavior drift: test claims login success but never asserts session",
-    "Only checks string match, not redirect"
-  ],
-  "score": 47,
-  "comments": [
-    "Needs assertion for redirected route",
-    "Test name overstates logic"
-  ],
-  "recommended_fix": "Add assertion for valid session token and redirect"
-}
