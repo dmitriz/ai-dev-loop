@@ -39,7 +39,7 @@ When terminal scripts are required:
 
 ## ESLint Configuration [REQUIRED]
 
-- Avoid redundant or conflicting ESLint configs. Stick to one, preferably `.eslintrc.js`, or none at all.
+- Avoid redundant or conflicting ESLint configs. Stick to one, preferably `.eslintrc.js`, or none at all. See the [ESLint Getting Started Guide](https://eslint.org/docs/user-guide/getting-started) for configuration options.
 
 
 [STRICT ENFORCEMENT]
